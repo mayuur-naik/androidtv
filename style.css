@@ -1,162 +1,129 @@
 :root {
-    --primary-blue: #00a8ff;
-    --dark-bg: #050a18;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --apple-black: #1d1d1f;
+    --apple-grey: #f5f5f7;
+    --apple-blue: #0071e3;
+    --glass-nav: rgba(255, 255, 255, 0.7);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
 }
 
 body {
-    background-color: var(--dark-bg);
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: white;
+    color: var(--apple-black);
     overflow-x: hidden;
-    overflow-y: auto; /* Allows scrolling on smaller phones */
-    padding: 20px;
+    line-height: 1.5;
 }
 
-/* Animated Background Blobs */
-.background-blobs {
+/* Translucent Nav */
+.navbar {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    z-index: -1;
+    height: 48px;
+    background: var(--glass-nav);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-.blob {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: var(--primary-blue);
-    filter: blur(80px);
-    opacity: 0.2;
-    border-radius: 50%;
-}
-
-.blob-1 { top: -50px; left: -50px; animation: move 10s infinite alternate; }
-.blob-2 { bottom: -50px; right: -50px; animation: move 15s infinite alternate-reverse; }
-
-@keyframes move {
-    from { transform: translate(0, 0); }
-    to { transform: translate(50px, 100px); }
-}
-
-/* Glassmorphism Card */
-.container {
-    width: 100%;
-    max-width: 450px;
-    margin: auto;
-}
-
-.glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 40px 30px;
-    text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.subtitle {
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 10px;
-}
-
-h1 {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-}
-
-h1 span {
-    color: var(--primary-blue);
-}
-
-.description {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 30px;
-}
-
-/* Button Styling */
-.btn-primary {
-    display: inline-block;
-    background: var(--primary-blue);
-    color: white;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 168, 255, 0.4);
-}
-
-.member-count {
-    font-size: 0.8rem;
-    margin-top: 15px;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-/* Feature Grid */
-.features {
-    display: grid;
-    gap: 15px;
-    margin-top: 35px;
-    text-align: left;
-}
-
-.feature-item {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 15px;
-    border-radius: 12px;
+.nav-content {
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    height: 100%;
+    padding: 0 20px;
 }
 
-.feature-item .icon {
-    font-size: 1.2rem;
+.logo { font-weight: 600; font-size: 14px; }
+.logo span { color: var(--apple-blue); }
+
+.nav-links a {
+    color: var(--apple-black);
+    text-decoration: none;
+    font-size: 12px;
+    margin-left: 20px;
+    opacity: 0.8;
 }
 
-.feature-item p {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
+/* Hero Section */
+.hero {
+    padding-top: 100px;
+    text-align: center;
+    background: #fafafa;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-footer {
-    margin-top: 40px;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
+.eyebrow { font-size: 14px; font-weight: 600; color: #bf4800; margin-bottom: 10px; }
+
+h1 { font-size: 48px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+h1 span { color: var(--apple-blue); }
+
+.hero-sub { font-size: 21px; margin-top: 15px; color: #6e6e73; }
+
+.hero-actions { margin-top: 30px; display: flex; gap: 20px; align-items: center; }
+
+.btn-apple {
+    background: var(--apple-blue);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 980px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 400px) {
-    .glass-card {
-        padding: 30px 20px;
-    }
-    h1 {
-        font-size: 1.8rem;
-    }
+.btn-apple:hover { opacity: 0.9; transform: scale(1.02); }
+
+.link-more { color: var(--apple-blue); text-decoration: none; font-size: 17px; }
+
+/* Bento Grid */
+.bento-section { padding: 50px 20px; background: white; }
+.bento-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.bento-item {
+    background: var(--apple-grey);
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    transition: transform 0.4s ease;
+}
+
+.bento-item:hover { transform: scale(1.01); }
+
+.main-feature { grid-column: span 1; background: #000; color: white; }
+.blue-bento { background: var(--apple-blue); color: white; }
+
+.badge {
+    display: inline-block;
+    margin-top: 20px;
+    background: rgba(255,255,255,0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+footer { padding: 40px; text-align: center; font-size: 12px; color: #6e6e73; }
+
+/* Mobile View */
+@media (max-width: 768px) {
+    h1 { font-size: 34px; }
+    .hero-sub { font-size: 18px; }
+    .nav-links { display: none; } /* Standard Apple Mobile Nav behavior */
 }
