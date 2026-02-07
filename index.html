@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Android TV Tools | The Store</title>
+    <title>Android TV Tools | Premium Collection</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,84 +11,106 @@
         <div class="nav-content">
             <span class="logo">Android TV Tools</span>
             <div class="nav-links">
-                <a href="#">Store</a>
-                <a href="#">Apps</a>
-                <a href="#">Guides</a>
-                <a href="https://t.me/androidTV_tools" class="nav-cta">Join</a>
+                <a href="#apps">Apps</a>
+                <a href="#optimization">Optimization</a>
+                <a href="#guides">Guides</a>
+                <a href="https://t.me/androidTV_tools" class="nav-cta">Join Free</a>
             </div>
         </div>
     </nav>
 
-    <main class="store-page">
-        <div class="promo-banner">
-            <p>Unlock the full potential of your TV. <span>Join 5,000+ members today →</span></p>
+    <main class="store-layout">
+        <div class="ribbon">
+            <p>We’ve done the hard work, so you don’t have to. <span>Join 5,000+ members →</span></p>
         </div>
 
-        <header class="store-header">
+        <header class="main-header">
             <h1>Store. <span>The tools you know they'll love.</span></h1>
-            <div class="help-links">
-                <a href="#">Connect with an Expert ↗</a>
-                <a href="#">Visit our Community ↗</a>
+            <div class="quick-links">
+                <a href="https://t.me/androidTV_tools">Chat with our Community ↗</a>
+                <a href="#apps">Browse the Collection ↗</a>
             </div>
         </header>
 
-        <section class="category-nav">
-            <div class="category-item">
-                <div class="icon-box"><img src="images/icon-tv.png" alt="TV"></div>
+        <section class="category-shelf">
+            <div class="cat-item">
+                <div class="cat-icon">📺</div>
                 <p>Android TV</p>
             </div>
-            <div class="category-item">
-                <div class="icon-box"><img src="images/icon-fire.png" alt="Fire"></div>
+            <div class="cat-item">
+                <div class="cat-icon">🔥</div>
                 <p>Firestick</p>
             </div>
-            <div class="category-item">
-                <div class="icon-box"><img src="images/icon-pc.png" alt="PC"></div>
-                <p>PC Tools</p>
+            <div class="cat-item">
+                <div class="cat-icon">🚀</div>
+                <p>Optimization</p>
+            </div>
+            <div class="cat-item">
+                <div class="cat-icon">📁</div>
+                <p>Utility</p>
             </div>
         </section>
 
-        <section class="shelf-section">
+        <section id="apps" class="shelf">
             <h2 class="shelf-title">The latest. <span>All-new and ad-free.</span></h2>
-            <div class="product-grid">
-                <div class="product-card dark-card">
-                    <div class="card-info">
-                        <p class="card-eyebrow">PREMIUM BUNDLE</p>
-                        <h3>Ultimate Ad-Free Pack</h3>
-                        <p class="card-sub">From @androidTV_tools</p>
+            <div class="hero-card-stack">
+                <div class="apple-card flagship-card">
+                    <div class="card-content">
+                        <p class="eyebrow">PREMIUM APPS</p>
+                        <h3>Discover high-quality streaming services.</h3>
+                        <p class="description">Often paid, but shared free with our community. No more wasting time searching forums.</p>
                     </div>
-                    <img src="images/hero-bundle.png" alt="Bundle" class="card-img">
-                </div>
-
-                <div class="product-card light-card">
-                    <div class="card-info">
-                        <p class="card-eyebrow">SPEED</p>
-                        <h3>Optimization Suite</h3>
-                        <p class="card-sub">Fast. Clean. Reliable.</p>
-                    </div>
-                    <img src="images/optimization.png" alt="Optimization" class="card-img">
+                    <div class="hero-emoji">🎬</div>
                 </div>
             </div>
         </section>
 
-        <section class="shelf-section">
-            <h2 class="shelf-title">The Community difference. <span>Even more reasons to join.</span></h2>
-            <div class="bento-row">
-                <div class="bento-card">
-                    <span class="bento-icon">💳</span>
-                    <h3>Zero Cost.</h3>
-                    <p>Access high-quality streaming tools for free.</p>
+        <section id="optimization" class="shelf">
+            <h2 class="shelf-title">Optimization. <span>Speed up your TV.</span></h2>
+            <div class="bento-grid">
+                <div class="apple-card bento-item">
+                    <span class="small-emoji">⚡</span>
+                    <h3>Essential Tools</h3>
+                    <p>Clean up storage and speed up performance instantly.</p>
                 </div>
-                <div class="bento-card">
-                    <span class="bento-icon">🛡️</span>
-                    <h3>Verified & Secure.</h3>
-                    <p>Every tool is hand-picked and tested for safety.</p>
+                <div class="apple-card bento-item blue-card">
+                    <span class="small-emoji">🏠</span>
+                    <h3>Custom Launchers</h3>
+                    <p>Make your home screen truly your own.</p>
+                </div>
+                <div class="apple-card bento-item wide-item">
+                    <div class="text-side">
+                        <h3>Real-time Updates</h3>
+                        <p>Get notifications on new app versions and security patches as soon as they are available.</p>
+                    </div>
+                    <div class="emoji-side">📡</div>
                 </div>
             </div>
+        </section>
+
+        <section id="guides" class="shelf">
+            <h2 class="shelf-title">Expertise. <span>We've got you covered.</span></h2>
+            <div class="apple-card guide-card">
+                <div class="guide-text">
+                    <p class="eyebrow">TUTORIALS</p>
+                    <h3>Step-by-step guides for everything.</h3>
+                    <p class="description">From sideloading an app to a complete TV setup, our exclusive guides make it easy.</p>
+                </div>
+                <div class="large-visual-emoji">📚</div>
+            </div>
+        </section>
+
+        <section class="final-checkout">
+            <h2>Ready to upgrade your TV?</h2>
+            <p>It’s completely free to join and start benefiting from our content.</p>
+            <a href="https://t.me/androidTV_tools" class="checkout-btn">Join Telegram Channel</a>
         </section>
     </main>
 
     <footer>
-        <p>© 2026 Android TV Tools. Launched Sept 24, 2025.</p>
+        <div class="footer-inner">
+            <p>© 2026 Android TV Tools. Verified and Secure. For the Community.</p>
+        </div>
     </footer>
 </body>
 </html>
