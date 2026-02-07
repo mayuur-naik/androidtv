@@ -1,60 +1,65 @@
 :root {
     --apple-black: #1d1d1f;
     --apple-grey: #f5f5f7;
-    --apple-blue: #0071e3;
-    --text-grey: #86868b;
+    --apple-blue: #0066cc;
+    --apple-text-secondary: #6e6e73;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
 
-body { background: white; color: var(--apple-black); -webkit-font-smoothing: antialiased; }
+body { background: #ffffff; color: var(--apple-black); -webkit-font-smoothing: antialiased; }
 
-/* Navigation */
+/* Navigation Bar */
 .apple-nav { position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid #d2d2d7; z-index: 1000; }
-.nav-content { max-width: 980px; margin: 0 auto; height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+.nav-content { max-width: 1000px; margin: 0 auto; height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
 .logo { font-weight: 600; font-size: 14px; }
-.nav-links a { color: var(--apple-black); text-decoration: none; font-size: 12px; margin-left: 20px; opacity: 0.8; }
-.nav-btn { background: var(--apple-blue); color: white !important; padding: 4px 10px; border-radius: 12px; opacity: 1 !important; }
+.nav-links a { text-decoration: none; color: var(--apple-black); font-size: 12px; margin-left: 15px; opacity: 0.8; }
+.nav-cta { background: var(--apple-blue); color: #fff !important; padding: 4px 12px; border-radius: 980px; opacity: 1 !important; }
 
-/* Sections */
-.hero-section { text-align: center; padding: 100px 20px; background: #fafafa; }
-.hero-eyebrow { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
-.hero-title { font-size: 56px; font-weight: 700; line-height: 1.07; letter-spacing: -0.015em; }
-.hero-title span { color: var(--text-grey); }
+/* Page Header */
+.store-page { max-width: 1000px; margin: 0 auto; padding: 20px; }
+.promo-banner { text-align: center; font-size: 12px; margin-bottom: 40px; }
+.promo-banner span { color: var(--apple-blue); font-weight: 500; }
 
-.feature-block { padding: 100px 20px; overflow: hidden; }
-.white-bg { background: white; }
-.grey-bg { background: var(--apple-grey); }
+.store-header h1 { font-size: 40px; font-weight: 700; margin-bottom: 10px; line-height: 1.1; }
+.store-header h1 span { color: var(--apple-text-secondary); }
+.help-links a { color: var(--apple-blue); text-decoration: none; font-size: 14px; margin-right: 20px; }
 
-.content-wrapper { max-width: 980px; margin: 0 auto; text-align: center; }
-.feature-eyebrow { font-size: 21px; font-weight: 600; margin-bottom: 15px; }
-.feature-title { font-size: 48px; font-weight: 700; line-height: 1.1; margin-bottom: 25px; letter-spacing: -0.01em; }
-.feature-text { font-size: 21px; color: var(--text-grey); max-width: 700px; margin: 0 auto 50px; }
+/* Category Nav (Horizontal Scroll) */
+.category-nav { display: flex; gap: 40px; margin: 50px 0; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+.category-item { text-align: center; min-width: 80px; cursor: pointer; }
+.icon-box { width: 60px; height: 60px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; background: var(--apple-grey); border-radius: 50%; }
+.icon-box img { width: 30px; }
+.category-item p { font-size: 12px; font-weight: 500; }
 
-/* Image Style */
-.apple-img { width: 100%; max-width: 800px; height: auto; pointer-events: none; border-radius: 20px; }
+/* Shelf Sections */
+.shelf-title { font-size: 24px; margin-bottom: 25px; font-weight: 600; }
+.shelf-title span { color: var(--apple-text-secondary); }
 
-/* Bento Grid */
-.bento-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
-.bento-card { background: white; padding: 40px; border-radius: 30px; }
-.bento-card.wide { grid-column: span 2; }
-.bento-card h3 { font-size: 24px; margin-bottom: 10px; }
-.blue-text h3 { color: var(--apple-blue); }
+/* Vertical Product Cards */
+.product-grid { display: flex; flex-direction: column; gap: 20px; }
+.product-card { border-radius: 28px; padding: 30px; min-height: 480px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+.dark-card { background: #000; color: #fff; }
+.light-card { background: var(--apple-grey); color: var(--apple-black); }
 
-/* CTA */
-.final-cta { text-align: center; padding: 120px 20px; }
-.final-cta h2 { font-size: 48px; margin-bottom: 10px; }
-.apple-button { background: var(--apple-blue); color: white; padding: 12px 24px; border-radius: 980px; text-decoration: none; font-weight: 500; display: inline-block; transition: transform 0.2s; }
-.apple-button.large { padding: 18px 36px; font-size: 17px; margin-top: 20px; }
-.apple-button:hover { transform: scale(1.02); }
+.card-eyebrow { font-size: 12px; font-weight: 600; opacity: 0.8; margin-bottom: 5px; }
+.product-card h3 { font-size: 28px; font-weight: 600; line-height: 1.1; }
+.card-sub { font-size: 17px; margin-top: 10px; opacity: 0.7; }
 
-footer { padding: 60px 20px; text-align: center; border-top: 1px solid #d2d2d7; font-size: 12px; color: var(--text-grey); }
+.card-img { width: 100%; max-width: 300px; margin: auto auto 0; display: block; }
 
-/* Mobile */
+/* Bento Row */
+.bento-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.bento-card { background: white; border: 1px solid #e5e5e5; padding: 30px; border-radius: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.bento-icon { font-size: 24px; display: block; margin-bottom: 15px; }
+.bento-card h3 { font-size: 17px; margin-bottom: 8px; }
+.bento-card p { font-size: 14px; color: var(--apple-text-secondary); }
+
+footer { padding: 60px 0; text-align: center; font-size: 12px; color: var(--apple-text-secondary); border-top: 1px solid #d2d2d7; margin-top: 80px; }
+
+/* Mobile View Adjustments */
 @media (max-width: 734px) {
-    .hero-title { font-size: 40px; }
-    .feature-title { font-size: 32px; }
-    .bento-grid { grid-template-columns: 1fr; }
-    .bento-card.wide { grid-column: span 1; }
+    .bento-row { grid-template-columns: 1fr; }
+    .store-header h1 { font-size: 32px; }
     .nav-links { display: none; }
 }
