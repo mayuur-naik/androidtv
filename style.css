@@ -2,64 +2,86 @@
     --apple-black: #1d1d1f;
     --apple-grey: #f5f5f7;
     --apple-blue: #0066cc;
-    --apple-text-secondary: #6e6e73;
+    --apple-text-secondary: #86868b;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif; }
 
-body { background: #ffffff; color: var(--apple-black); -webkit-font-smoothing: antialiased; }
+body { background: #ffffff; color: var(--apple-black); -webkit-font-smoothing: antialiased; overflow-x: hidden; scroll-behavior: smooth; }
 
-/* Navigation Bar */
-.apple-nav { position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid #d2d2d7; z-index: 1000; }
+/* Navigation */
+.apple-nav { position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid #d2d2d7; z-index: 2000; }
 .nav-content { max-width: 1000px; margin: 0 auto; height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
 .logo { font-weight: 600; font-size: 14px; }
-.nav-links a { text-decoration: none; color: var(--apple-black); font-size: 12px; margin-left: 15px; opacity: 0.8; }
-.nav-cta { background: var(--apple-blue); color: #fff !important; padding: 4px 12px; border-radius: 980px; opacity: 1 !important; }
+.nav-links a { text-decoration: none; color: var(--apple-black); font-size: 12px; margin-left: 20px; opacity: 0.8; }
+.nav-cta { background: var(--apple-blue); color: white !important; padding: 4px 12px; border-radius: 980px; opacity: 1 !important; }
 
-/* Page Header */
-.store-page { max-width: 1000px; margin: 0 auto; padding: 20px; }
-.promo-banner { text-align: center; font-size: 12px; margin-bottom: 40px; }
-.promo-banner span { color: var(--apple-blue); font-weight: 500; }
+/* Main Layout */
+.store-layout { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+.ribbon { text-align: center; font-size: 12px; padding: 40px 0 20px; color: var(--apple-black); }
+.ribbon span { color: var(--apple-blue); font-weight: 500; cursor: pointer; }
 
-.store-header h1 { font-size: 40px; font-weight: 700; margin-bottom: 10px; line-height: 1.1; }
-.store-header h1 span { color: var(--apple-text-secondary); }
-.help-links a { color: var(--apple-blue); text-decoration: none; font-size: 14px; margin-right: 20px; }
+.main-header { padding: 40px 0; }
+.main-header h1 { font-size: 44px; font-weight: 700; line-height: 1.1; letter-spacing: -0.015em; }
+.main-header h1 span { color: var(--apple-text-secondary); }
+.quick-links { margin-top: 15px; }
+.quick-links a { color: var(--apple-blue); text-decoration: none; font-size: 14px; margin-right: 25px; font-weight: 400; }
 
-/* Category Nav (Horizontal Scroll) */
-.category-nav { display: flex; gap: 40px; margin: 50px 0; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
-.category-item { text-align: center; min-width: 80px; cursor: pointer; }
-.icon-box { width: 60px; height: 60px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; background: var(--apple-grey); border-radius: 50%; }
-.icon-box img { width: 30px; }
-.category-item p { font-size: 12px; font-weight: 500; }
+/* Horizontal Icon Bar */
+.category-shelf { display: flex; gap: 45px; margin: 40px 0 60px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
+.cat-item { text-align: center; min-width: 70px; cursor: pointer; transition: transform 0.2s; }
+.cat-item:hover { transform: translateY(-5px); }
+.cat-icon { font-size: 32px; background: var(--apple-grey); width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+.cat-item p { font-size: 12px; font-weight: 500; color: var(--apple-black); }
 
-/* Shelf Sections */
-.shelf-title { font-size: 24px; margin-bottom: 25px; font-weight: 600; }
+/* Shelf Headers */
+.shelf { padding-bottom: 80px; }
+.shelf-title { font-size: 26px; font-weight: 600; margin-bottom: 25px; }
 .shelf-title span { color: var(--apple-text-secondary); }
 
-/* Vertical Product Cards */
-.product-grid { display: flex; flex-direction: column; gap: 20px; }
-.product-card { border-radius: 28px; padding: 30px; min-height: 480px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
-.dark-card { background: #000; color: #fff; }
-.light-card { background: var(--apple-grey); color: var(--apple-black); }
+/* Apple Cards */
+.apple-card { background: var(--apple-grey); border-radius: 28px; padding: 35px; overflow: hidden; position: relative; display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.apple-card:hover { transform: scale(1.01); }
 
-.card-eyebrow { font-size: 12px; font-weight: 600; opacity: 0.8; margin-bottom: 5px; }
-.product-card h3 { font-size: 28px; font-weight: 600; line-height: 1.1; }
-.card-sub { font-size: 17px; margin-top: 10px; opacity: 0.7; }
+.flagship-card { background: #000; color: #fff; min-height: 520px; justify-content: space-between; }
+.eyebrow { font-size: 12px; font-weight: 600; opacity: 0.7; margin-bottom: 8px; letter-spacing: 0.02em; }
+.flagship-card h3 { font-size: 36px; line-height: 1.07; font-weight: 600; max-width: 300px; }
+.description { font-size: 19px; margin-top: 10px; color: #a1a1a6; line-height: 1.3; }
 
-.card-img { width: 100%; max-width: 300px; margin: auto auto 0; display: block; }
+.hero-emoji { font-size: 160px; align-self: flex-end; margin-right: -20px; margin-bottom: -40px; }
 
-/* Bento Row */
-.bento-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.bento-card { background: white; border: 1px solid #e5e5e5; padding: 30px; border-radius: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-.bento-icon { font-size: 24px; display: block; margin-bottom: 15px; }
-.bento-card h3 { font-size: 17px; margin-bottom: 8px; }
-.bento-card p { font-size: 14px; color: var(--apple-text-secondary); }
+/* Bento Grid */
+.bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.bento-item { min-height: 240px; }
+.small-emoji { font-size: 28px; margin-bottom: 15px; display: block; }
+.bento-item h3 { font-size: 19px; margin-bottom: 8px; }
+.bento-item p { font-size: 14px; color: var(--apple-text-secondary); }
+.blue-card { background: #f0f7ff; }
 
-footer { padding: 60px 0; text-align: center; font-size: 12px; color: var(--apple-text-secondary); border-top: 1px solid #d2d2d7; margin-top: 80px; }
+.wide-item { grid-column: span 2; min-height: 200px; flex-direction: row; align-items: center; justify-content: space-between; }
+.emoji-side { font-size: 80px; }
 
-/* Mobile View Adjustments */
+/* Guide Card */
+.guide-card { min-height: 400px; text-align: left; }
+.guide-card h3 { font-size: 28px; }
+.large-visual-emoji { font-size: 120px; position: absolute; bottom: 10px; right: 20px; opacity: 0.9; }
+
+/* CTA Section */
+.final-checkout { text-align: center; padding: 100px 0; border-top: 1px solid #d2d2d7; }
+.final-checkout h2 { font-size: 40px; margin-bottom: 10px; letter-spacing: -0.01em; }
+.final-checkout p { font-size: 19px; color: var(--apple-text-secondary); margin-bottom: 30px; }
+.checkout-btn { background: var(--apple-blue); color: white; padding: 16px 32px; border-radius: 980px; text-decoration: none; font-weight: 600; font-size: 17px; display: inline-block; transition: all 0.2s; }
+.checkout-btn:hover { background: #0077ed; transform: scale(1.03); }
+
+footer { padding: 60px 0; border-top: 1px solid #d2d2d7; text-align: center; font-size: 12px; color: var(--apple-text-secondary); }
+
+/* Mobile Optimizations */
 @media (max-width: 734px) {
-    .bento-row { grid-template-columns: 1fr; }
-    .store-header h1 { font-size: 32px; }
+    .main-header h1 { font-size: 32px; }
+    .flagship-card h3 { font-size: 28px; }
+    .hero-emoji { font-size: 120px; }
+    .bento-grid { grid-template-columns: 1fr; }
+    .wide-item { grid-column: span 1; flex-direction: column; text-align: center; padding-bottom: 0; }
+    .emoji-side { font-size: 60px; margin-top: 20px; }
     .nav-links { display: none; }
 }
