@@ -1,148 +1,60 @@
 :root {
     --apple-black: #1d1d1f;
     --apple-grey: #f5f5f7;
-    --apple-blue: #0066cc;
-    --apple-pink: #d60017;
+    --apple-blue: #0071e3;
+    --text-grey: #86868b;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif; }
 
-body {
-    background-color: #ffffff; /* Clean white like apple.com */
-    color: var(--apple-black);
-    -webkit-font-smoothing: antialiased;
-}
+body { background: white; color: var(--apple-black); -webkit-font-smoothing: antialiased; }
 
-/* Nav Bar */
-.apple-nav {
-    position: sticky;
-    top: 0;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid #e5e5e5;
-    z-index: 1000;
-}
-
-.nav-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    height: 44px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
+/* Navigation */
+.apple-nav { position: sticky; top: 0; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid #d2d2d7; z-index: 1000; }
+.nav-content { max-width: 980px; margin: 0 auto; height: 44px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
 .logo { font-weight: 600; font-size: 14px; }
-.nav-links a { text-decoration: none; color: var(--apple-black); font-size: 12px; margin-left: 15px; opacity: 0.8; }
+.nav-links a { color: var(--apple-black); text-decoration: none; font-size: 12px; margin-left: 20px; opacity: 0.8; }
+.nav-btn { background: var(--apple-blue); color: white !important; padding: 4px 10px; border-radius: 12px; opacity: 1 !important; }
 
-/* Content Layout */
-.store-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
+/* Sections */
+.hero-section { text-align: center; padding: 100px 20px; background: #fafafa; }
+.hero-eyebrow { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.hero-title { font-size: 56px; font-weight: 700; line-height: 1.07; letter-spacing: -0.015em; }
+.hero-title span { color: var(--text-grey); }
 
-.promo-text { font-size: 12px; margin-bottom: 30px; }
-.promo-text span { color: var(--apple-blue); font-weight: 500; }
+.feature-block { padding: 100px 20px; overflow: hidden; }
+.white-bg { background: white; }
+.grey-bg { background: var(--apple-grey); }
 
-h1 { font-size: 38px; line-height: 1.1; margin-bottom: 40px; }
-h1 span { color: #6e6e73; }
+.content-wrapper { max-width: 980px; margin: 0 auto; text-align: center; }
+.feature-eyebrow { font-size: 21px; font-weight: 600; margin-bottom: 15px; }
+.feature-title { font-size: 48px; font-weight: 700; line-height: 1.1; margin-bottom: 25px; letter-spacing: -0.01em; }
+.feature-text { font-size: 21px; color: var(--text-grey); max-width: 700px; margin: 0 auto 50px; }
 
-/* Category Icons */
-.category-icons {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 60px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-}
+/* Image Style */
+.apple-img { width: 100%; max-width: 800px; height: auto; pointer-events: none; border-radius: 20px; }
 
-.item { text-align: center; min-width: 80px; }
-.icon-circle { 
-    font-size: 24px; 
-    background: var(--apple-grey); 
-    width: 60px; height: 60px; 
-    border-radius: 50%; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    margin: 0 auto 10px; 
-}
+/* Bento Grid */
+.bento-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
+.bento-card { background: white; padding: 40px; border-radius: 30px; }
+.bento-card.wide { grid-column: span 2; }
+.bento-card h3 { font-size: 24px; margin-bottom: 10px; }
+.blue-text h3 { color: var(--apple-blue); }
 
-.section-title h2 { font-size: 24px; margin-bottom: 20px; }
-.section-title span { color: #6e6e73; }
+/* CTA */
+.final-cta { text-align: center; padding: 120px 20px; }
+.final-cta h2 { font-size: 48px; margin-bottom: 10px; }
+.apple-button { background: var(--apple-blue); color: white; padding: 12px 24px; border-radius: 980px; text-decoration: none; font-weight: 500; display: inline-block; transition: transform 0.2s; }
+.apple-button.large { padding: 18px 36px; font-size: 17px; margin-top: 20px; }
+.apple-button:hover { transform: scale(1.02); }
 
-/* Vertical Product Cards */
-.product-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+footer { padding: 60px 20px; text-align: center; border-top: 1px solid #d2d2d7; font-size: 12px; color: var(--text-grey); }
 
-.card {
-    background: var(--apple-grey);
-    border-radius: 24px;
-    padding: 30px;
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.hero-card {
-    background: #000; /* Black contrast for the main feature */
-    color: white;
-    min-height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.eyebrow { font-size: 12px; font-weight: 600; color: #f5f5f7; margin-bottom: 5px; opacity: 0.7; }
-.hero-card h3 { font-size: 28px; }
-.sub-headline { font-size: 17px; margin-top: 5px; opacity: 0.8; }
-
-.tv-mockup {
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(135deg, #333, #000);
-    border-radius: 12px;
-    margin-top: 30px;
-    border: 4px solid #1a1a1a;
-}
-
-/* Bento Cards Row */
-.bento-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.bento-card { min-height: 200px; }
-.blue-tint { background: #f0f7ff; }
-
-/* CTA Button */
-.cta-section { text-align: center; padding: 80px 0; }
-.apple-button {
-    background: var(--apple-blue);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 980px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 20px;
-    font-weight: 500;
-}
-
-footer { text-align: center; padding: 40px; color: #86868b; font-size: 12px; border-top: 1px solid #e5e5e5; }
-
-/* Mobile Touch Fixes */
-@media (max-width: 600px) {
-    .bento-row { grid-template-columns: 1fr; }
-    h1 { font-size: 32px; }
+/* Mobile */
+@media (max-width: 734px) {
+    .hero-title { font-size: 40px; }
+    .feature-title { font-size: 32px; }
+    .bento-grid { grid-template-columns: 1fr; }
+    .bento-card.wide { grid-column: span 1; }
+    .nav-links { display: none; }
 }
