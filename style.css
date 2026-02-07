@@ -1,129 +1,148 @@
 :root {
     --apple-black: #1d1d1f;
     --apple-grey: #f5f5f7;
-    --apple-blue: #0071e3;
-    --glass-nav: rgba(255, 255, 255, 0.7);
+    --apple-blue: #0066cc;
+    --apple-pink: #d60017;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-    background-color: white;
+    background-color: #ffffff; /* Clean white like apple.com */
     color: var(--apple-black);
-    overflow-x: hidden;
-    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Translucent Nav */
-.navbar {
-    position: fixed;
+/* Nav Bar */
+.apple-nav {
+    position: sticky;
     top: 0;
-    width: 100%;
-    height: 48px;
-    background: var(--glass-nav);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid #e5e5e5;
     z-index: 1000;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 .nav-content {
     max-width: 1000px;
     margin: 0 auto;
+    height: 44px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
     padding: 0 20px;
 }
 
 .logo { font-weight: 600; font-size: 14px; }
-.logo span { color: var(--apple-blue); }
+.nav-links a { text-decoration: none; color: var(--apple-black); font-size: 12px; margin-left: 15px; opacity: 0.8; }
 
-.nav-links a {
-    color: var(--apple-black);
-    text-decoration: none;
-    font-size: 12px;
-    margin-left: 20px;
-    opacity: 0.8;
+/* Content Layout */
+.store-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
 }
 
-/* Hero Section */
-.hero {
-    padding-top: 100px;
-    text-align: center;
-    background: #fafafa;
-    min-height: 80vh;
+.promo-text { font-size: 12px; margin-bottom: 30px; }
+.promo-text span { color: var(--apple-blue); font-weight: 500; }
+
+h1 { font-size: 38px; line-height: 1.1; margin-bottom: 40px; }
+h1 span { color: #6e6e73; }
+
+/* Category Icons */
+.category-icons {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 60px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.item { text-align: center; min-width: 80px; }
+.icon-circle { 
+    font-size: 24px; 
+    background: var(--apple-grey); 
+    width: 60px; height: 60px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0 auto 10px; 
+}
+
+.section-title h2 { font-size: 24px; margin-bottom: 20px; }
+.section-title span { color: #6e6e73; }
+
+/* Vertical Product Cards */
+.product-grid {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 20px;
 }
 
-.eyebrow { font-size: 14px; font-weight: 600; color: #bf4800; margin-bottom: 10px; }
+.card {
+    background: var(--apple-grey);
+    border-radius: 24px;
+    padding: 30px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
 
-h1 { font-size: 48px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
-h1 span { color: var(--apple-blue); }
+.hero-card {
+    background: #000; /* Black contrast for the main feature */
+    color: white;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-.hero-sub { font-size: 21px; margin-top: 15px; color: #6e6e73; }
+.eyebrow { font-size: 12px; font-weight: 600; color: #f5f5f7; margin-bottom: 5px; opacity: 0.7; }
+.hero-card h3 { font-size: 28px; }
+.sub-headline { font-size: 17px; margin-top: 5px; opacity: 0.8; }
 
-.hero-actions { margin-top: 30px; display: flex; gap: 20px; align-items: center; }
+.tv-mockup {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #333, #000);
+    border-radius: 12px;
+    margin-top: 30px;
+    border: 4px solid #1a1a1a;
+}
 
-.btn-apple {
+/* Bento Cards Row */
+.bento-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.bento-card { min-height: 200px; }
+.blue-tint { background: #f0f7ff; }
+
+/* CTA Button */
+.cta-section { text-align: center; padding: 80px 0; }
+.apple-button {
     background: var(--apple-blue);
     color: white;
     padding: 12px 24px;
     border-radius: 980px;
     text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s;
-}
-
-.btn-apple:hover { opacity: 0.9; transform: scale(1.02); }
-
-.link-more { color: var(--apple-blue); text-decoration: none; font-size: 17px; }
-
-/* Bento Grid */
-.bento-section { padding: 50px 20px; background: white; }
-.bento-grid {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.bento-item {
-    background: var(--apple-grey);
-    padding: 40px;
-    border-radius: 30px;
-    text-align: center;
-    transition: transform 0.4s ease;
-}
-
-.bento-item:hover { transform: scale(1.01); }
-
-.main-feature { grid-column: span 1; background: #000; color: white; }
-.blue-bento { background: var(--apple-blue); color: white; }
-
-.badge {
     display: inline-block;
     margin-top: 20px;
-    background: rgba(255,255,255,0.2);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
+    font-weight: 500;
 }
 
-footer { padding: 40px; text-align: center; font-size: 12px; color: #6e6e73; }
+footer { text-align: center; padding: 40px; color: #86868b; font-size: 12px; border-top: 1px solid #e5e5e5; }
 
-/* Mobile View */
-@media (max-width: 768px) {
-    h1 { font-size: 34px; }
-    .hero-sub { font-size: 18px; }
-    .nav-links { display: none; } /* Standard Apple Mobile Nav behavior */
+/* Mobile Touch Fixes */
+@media (max-width: 600px) {
+    .bento-row { grid-template-columns: 1fr; }
+    h1 { font-size: 32px; }
 }
