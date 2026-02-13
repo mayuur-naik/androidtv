@@ -18,7 +18,6 @@
             --accent-blue: #0A84FF;
             --accent-green: #30D158;
             --radius: 32px;
-            /* Scroll variable updated by JS */
             --scroll: 0; 
         }
 
@@ -32,7 +31,7 @@
             line-height: 1.4;
         }
 
-        /* --- 2. AMBIENT AURORA BACKGROUND --- */
+        /* --- 2. GPU-ACCELERATED AMBIENT BACKGROUND --- */
         .ambient-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1; overflow: hidden; background: #000;
@@ -40,16 +39,17 @@
         .orb {
             position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6;
             animation: floatOrb 20s infinite alternate ease-in-out;
-            /* Parallax Effect applied to background */
-            transform: translateY(calc(var(--scroll) * 0.3px)); 
+            /* GPU Hardware Acceleration */
+            will-change: transform;
+            transform: translate3d(0, calc(var(--scroll) * 0.3px), 0); 
         }
         .orb-1 { width: 50vw; height: 50vw; background: #5E5CE6; top: -10%; left: -10%; }
         .orb-2 { width: 40vw; height: 40vw; background: #0A84FF; bottom: -10%; right: -10%; animation-delay: -5s; }
         .orb-3 { width: 45vw; height: 45vw; background: #BF5AF2; top: 40%; left: 30%; animation-delay: -10s; }
 
         @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(10vw, 10vh) scale(1.2); }
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(10vw, 10vh, 0) scale(1.2); }
         }
 
         /* --- 3. LIQUID GLASS NAVIGATION --- */
@@ -67,20 +67,26 @@
         .logo { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
         .nav-links { display: flex; gap: 24px; }
         .nav-links a { text-decoration: none; color: var(--text-main); font-size: 12px; opacity: 0.8; transition: opacity 0.2s; }
+        
+        /* FIXED BUTTON UNDERLINE */
         .join-btn {
             background: var(--text-main); color: #000 !important;
             padding: 6px 16px; border-radius: 980px; font-weight: 600; opacity: 1 !important;
+            text-decoration: none !important; 
         }
 
-        /* --- 4. SCROLL ANIMATIONS (The "Flying" Effect) --- */
+        /* --- 4. SMOOTH SCROLL ANIMATIONS (The "Flying" Effect) --- */
         .reveal {
             opacity: 0;
-            transform: translateY(60px) scale(0.95);
-            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            /* Using translate3d instead of translateY forces the GPU to render this */
+            transform: translate3d(0, 80px, 0) scale(0.95);
+            /* Apple's signature easeOutExpo curve for buttery smoothness */
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
         .reveal.visible {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
         }
 
         /* --- 5. MAIN LAYOUT & TYPOGRAPHY --- */
@@ -109,7 +115,7 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.2);
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .glass-card:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 40px 80px rgba(0,0,0,0.6); z-index: 10;}
+        .glass-card:hover { transform: translate3d(0, -5px, 0) scale(1.01); box-shadow: 0 40px 80px rgba(0,0,0,0.6); z-index: 10;}
 
         .card-full { grid-column: span 2; height: 600px; text-align: center; align-items: center; }
         .card-half { height: 400px; }
@@ -118,23 +124,24 @@
         .glass-card p { font-size: 17px; color: var(--text-muted); max-width: 420px; margin: 0 auto; }
         .eyebrow { font-size: 12px; font-weight: 700; color: var(--accent-blue); margin-bottom: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
 
-        /* --- 7. PARALLAX TV SVG --- */
+        /* --- 7. GPU PARALLAX TV SVG --- */
         .tv-parallax-container {
             width: 100%; max-width: 550px; margin-top: 40px;
-            /* Parallax: Moves UP slightly as you scroll DOWN */
-            transform: translateY(calc(var(--scroll) * -0.15px)); 
             filter: drop-shadow(0 0 60px rgba(10, 132, 255, 0.3));
+            /* GPU Hardware Acceleration */
+            will-change: transform;
+            transform: translate3d(0, calc(var(--scroll) * -0.15px), 0); 
         }
 
         /* Floating App Icons */
         .apps-stage { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; width: 140px; margin: 40px auto 0; }
-        .app-icon { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.4); animation: float 6s ease-in-out infinite; }
+        .app-icon { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.4); animation: float 6s ease-in-out infinite; will-change: transform; }
         .a1 { background: linear-gradient(135deg, #ff3b30, #ff9500); animation-delay: 0s; }
         .a2 { background: linear-gradient(135deg, #5E5CE6, #BF5AF2); animation-delay: 1s; }
         .a3 { background: linear-gradient(135deg, #30D158, #30b0c7); animation-delay: 2s; }
         .a4 { background: linear-gradient(135deg, #0A84FF, #5ac8fa); animation-delay: 3s; }
 
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes float { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -12px, 0); } }
 
         /* --- 8. FOOTER CTA --- */
         .footer-cta { margin-top: 60px; text-align: center; padding: 100px 20px; }
@@ -273,34 +280,10 @@
     </main>
 
     <script>
-        // 1. Parallax Scroll Engine
+        // 1. Hardware-Accelerated Parallax Scroll Engine
+        let ticking = false;
+        
         window.addEventListener('scroll', () => {
-            // Update the CSS variable based on how far down the user scrolls
-            document.documentElement.style.setProperty('--scroll', window.scrollY);
-        });
-
-        // 2. Intersection Observer (The "Flying" Reveal Effect)
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15 // Triggers when 15% of the card is visible
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Add the 'visible' class to trigger CSS animation
-                    entry.target.classList.add('visible');
-                    // Stop observing once it has animated in
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Find all elements with the 'reveal' class and observe them
-        document.querySelectorAll('.reveal').forEach((element) => {
-            observer.observe(element);
-        });
-    </script>
-</body>
-</html>
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    // This syncs the CSS variable to the monitor's refresh rate (60fps/
