@@ -2,152 +2,168 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="f2OzxAvfKvhB6RBXJetOHW0EiDo6yuxzuQ9xFXimAYU" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Android TV Tools | Premium Mods & Apps 2026</title>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "How do I install Mod APKs on Android TV?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Join our Telegram channel @androidTV_tools to download the APK. Transfer it to your TV using 'Send Files to TV' and install it using a File Manager."
-    }
-  }, {
-    "@type": "Question",
-    "name": "Are these Android TV apps safe?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Yes. Every app shared on our channel is tested for malware and compatibility with Android TV, Firestick, and Google TV."
-    }
-  }, {
-    "@type": "Question",
-    "name": "How to speed up a slow Android TV?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Use our debloat guides to disable unused system apps and limit background processes. Join the channel for the full tutorial."
-    }
-  }]
-}
-</script>
-    <meta name="description" content="The #1 Telegram channel for Android TV Mod APKs. Download ad-free apps, optimization tools, and join 5,000+ members.">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Android TV Apps & Mod APKs | Best Telegram Channel 2026</title>
+    <meta name="description" content="Join the #1 Telegram channel for Android TV apps, Mod APKs, and Smart TV tools. Download free ad-free apps, optimization guides, and join the discussion.">
+    
     <style>
-        /* --- CORE VARIABLES --- */
+        /* --- 1. CORE VARIABLES --- */
         :root {
-            --bg: #ffffff;
-            --text-primary: #1d1d1f;
-            --text-secondary: #86868b;
-            --card-light: #f5f5f7;
-            --card-dark: #000000;
-            --accent-blue: #0071e3;
-            --accent-green: #34c759;
-            --accent-orange: #ff9500;
-            --radius: 28px;
+            --bg-deep: #000000;
+            --text-main: #ffffff;
+            --text-muted: #86868b;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-blue: #0A84FF;
+            --accent-green: #30D158;
+            --radius: 32px;
+            /* Scroll variable updated by JS */
+            --scroll: 0; 
         }
 
-        /* --- RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg); color: var(--text-primary);
-            overflow-x: hidden; line-height: 1.4;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.4;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- 2. AMBIENT AURORA BACKGROUND --- */
+        .ambient-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; overflow: hidden; background: #000;
+        }
+        .orb {
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6;
+            animation: floatOrb 20s infinite alternate ease-in-out;
+            /* Parallax Effect applied to background */
+            transform: translateY(calc(var(--scroll) * 0.3px)); 
+        }
+        .orb-1 { width: 50vw; height: 50vw; background: #5E5CE6; top: -10%; left: -10%; }
+        .orb-2 { width: 40vw; height: 40vw; background: #0A84FF; bottom: -10%; right: -10%; animation-delay: -5s; }
+        .orb-3 { width: 45vw; height: 45vw; background: #BF5AF2; top: 40%; left: 30%; animation-delay: -10s; }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(10vw, 10vh) scale(1.2); }
+        }
+
+        /* --- 3. LIQUID GLASS NAVIGATION --- */
         nav {
-            position: sticky; top: 0; z-index: 1000;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.1); height: 52px;
+            position: sticky; top: 0; z-index: 1000; height: 52px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: saturate(180%) blur(30px);
+            -webkit-backdrop-filter: saturate(180%) blur(30px);
+            border-bottom: 1px solid var(--glass-border);
         }
         .nav-inner {
-            max-width: 980px; margin: 0 auto; height: 100%;
+            max-width: 1000px; margin: 0 auto; height: 100%;
             display: flex; justify-content: space-between; align-items: center; padding: 0 24px;
         }
         .logo { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
         .nav-links { display: flex; gap: 24px; }
-        .nav-links a { text-decoration: none; color: var(--text-primary); font-size: 12px; opacity: 0.8; transition: opacity 0.2s; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 12px; opacity: 0.8; transition: opacity 0.2s; }
         .join-btn {
-            background: var(--text-primary); color: white !important;
-            padding: 6px 16px; border-radius: 980px; font-weight: 500; opacity: 1 !important;
+            background: var(--text-main); color: #000 !important;
+            padding: 6px 16px; border-radius: 980px; font-weight: 600; opacity: 1 !important;
         }
 
-        /* --- HERO HEADER --- */
-        main { max-width: 980px; margin: 0 auto; padding: 0 20px 80px; }
-        .hero-header { padding: 80px 0 50px; text-align: left; }
-        .eyebrow { font-size: 12px; font-weight: 700; color: var(--accent-orange); margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
-        h1 { font-size: 56px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 20px; }
-        h1 span { color: var(--text-secondary); }
-        .hero-desc { font-size: 21px; color: var(--text-secondary); max-width: 600px; line-height: 1.5; }
+        /* --- 4. SCROLL ANIMATIONS (The "Flying" Effect) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px) scale(0.95);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
 
-        /* --- BENTO GRID --- */
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 30px; }
+        /* --- 5. MAIN LAYOUT & TYPOGRAPHY --- */
+        main { max-width: 1000px; margin: 0 auto; padding: 0 20px 80px; perspective: 1000px; }
+        
+        .hero-header { padding: 100px 0 60px; text-align: center; }
+        .hero-header h1 {
+            font-size: 64px; font-weight: 700; letter-spacing: -0.04em;
+            line-height: 1.05; margin-bottom: 20px;
+            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-desc { font-size: 24px; color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.4; }
 
-        .card {
-            background: var(--card-light); border-radius: var(--radius); padding: 40px;
-            overflow: hidden; position: relative; display: flex; flex-direction: column; justify-content: space-between;
+        /* --- 6. LIQUID GLASS BENTO GRID --- */
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px) saturate(200%);
+            -webkit-backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 40px; overflow: hidden; position: relative;
+            display: flex; flex-direction: column; justify-content: space-between;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.2);
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .card:hover { transform: scale(1.02); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .glass-card:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 40px 80px rgba(0,0,0,0.6); z-index: 10;}
 
-        .card-dark {
-            background: var(--card-dark); color: white;
-            grid-column: span 2; height: 600px; text-align: center; align-items: center;
-        }
-        .card-blue {
-            background: var(--accent-blue); color: white;
-            grid-column: span 2; height: 320px; flex-direction: row; align-items: center; justify-content: space-between;
-        }
-
-        .card h2 { font-size: 36px; font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
-        .card p { font-size: 17px; opacity: 0.8; line-height: 1.4; max-width: 420px; }
-        .card-dark .eyebrow { color: #86868b; }
-
-
-        /* --- NEW REALISTIC SVG TV --- */
-        .tv-svg-container {
-            width: 100%; max-width: 500px; margin-top: 40px;
-            filter: drop-shadow(0 0 60px rgba(0, 113, 227, 0.2)); /* Ambilight Glow */
-        }
+        .card-full { grid-column: span 2; height: 600px; text-align: center; align-items: center; }
+        .card-half { height: 400px; }
         
-        /* Floating Animation for Apps */
-        .float-anim { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .glass-card h2 { font-size: 36px; font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+        .glass-card p { font-size: 17px; color: var(--text-muted); max-width: 420px; margin: 0 auto; }
+        .eyebrow { font-size: 12px; font-weight: 700; color: var(--accent-blue); margin-bottom: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
 
-        /* --- OTHER GRAPHICS --- */
+        /* --- 7. PARALLAX TV SVG --- */
+        .tv-parallax-container {
+            width: 100%; max-width: 550px; margin-top: 40px;
+            /* Parallax: Moves UP slightly as you scroll DOWN */
+            transform: translateY(calc(var(--scroll) * -0.15px)); 
+            filter: drop-shadow(0 0 60px rgba(10, 132, 255, 0.3));
+        }
+
+        /* Floating App Icons */
         .apps-stage { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; width: 140px; margin: 40px auto 0; }
-        .app-icon { width: 64px; height: 64px; border-radius: 16px; position: relative; }
-        .a1 { background: linear-gradient(135deg, #ff3b30, #ff9500); }
-        .a2 { background: linear-gradient(135deg, #5856d6, #af52de); }
-        .a3 { background: linear-gradient(135deg, #34c759, #30b0c7); }
-        .a4 { background: linear-gradient(135deg, #007aff, #5ac8fa); }
+        .app-icon { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.4); animation: float 6s ease-in-out infinite; }
+        .a1 { background: linear-gradient(135deg, #ff3b30, #ff9500); animation-delay: 0s; }
+        .a2 { background: linear-gradient(135deg, #5E5CE6, #BF5AF2); animation-delay: 1s; }
+        .a3 { background: linear-gradient(135deg, #30D158, #30b0c7); animation-delay: 2s; }
+        .a4 { background: linear-gradient(135deg, #0A84FF, #5ac8fa); animation-delay: 3s; }
 
-        /* --- FOOTER --- */
-        .footer-cta { margin-top: 60px; text-align: center; padding: 80px 20px; background: var(--card-light); border-radius: var(--radius); }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+        /* --- 8. FOOTER CTA --- */
+        .footer-cta { margin-top: 60px; text-align: center; padding: 100px 20px; }
         .cta-btn {
-            display: inline-block; background: var(--accent-blue); color: white;
+            display: inline-block; background: var(--text-main); color: #000;
             text-decoration: none; padding: 18px 40px; border-radius: 980px;
             font-weight: 600; font-size: 19px; margin-top: 25px;
+            box-shadow: 0 0 40px rgba(255,255,255,0.2); transition: transform 0.2s;
         }
+        .cta-btn:hover { transform: scale(1.03); }
 
-        /* --- MOBILE POLISH --- */
+        /* --- 9. MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            h1 { font-size: 40px; }
+            .hero-header h1 { font-size: 44px; }
             .grid { grid-template-columns: 1fr; }
-            .card-dark { grid-column: span 1; height: 500px; }
-            .card-blue { grid-column: span 1; height: auto; flex-direction: column; text-align: center; gap: 30px; padding: 50px 30px; }
+            .card-full { grid-column: span 1; height: 500px; }
+            .card-half { height: auto; min-height: 350px; }
             .nav-links { display: none; }
-            .tv-svg-container { max-width: 320px; margin-top: 30px; }
+            .tv-parallax-container { max-width: 320px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
     <nav>
         <div class="nav-inner">
@@ -164,68 +180,65 @@
     </nav>
 
     <main>
-        <section class="hero-header">
-            <p class="eyebrow">New for 2026</p>
-            <h1>Unlock the full potential of<br><span>Android TV Apps & Mod APKs.</span></h1>
+        <section class="hero-header reveal">
+            <h1>Unlock the full potential.<br><span>Android TV Mod APKs.</span></h1>
             <p class="hero-desc">The #1 Telegram channel for free Android TV apps, mod APKs, and tools.</p>
         </section>
 
         <div class="grid">
             
-            <div class="card card-dark">
+            <div class="glass-card card-full reveal">
                 <div>
                     <p class="eyebrow">PREMIUM BUNDLE</p>
-                    <h2>Best Mod APKs for tv.</h2>
-                    <p>Access premium streaming apps,modded apps, players, and utilities. Ad-free. Cost-free.</p>
+                    <h2>Best Mod APKs.</h2>
+                    <p>Access premium streaming apps, players, and utilities. Ad-free. Cost-free.</p>
                 </div>
                 
-                <div class="tv-svg-container">
+                <div class="tv-parallax-container">
                     <svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+                                <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
                                 <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
                             </linearGradient>
                             <linearGradient id="glassReflect" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.1" />
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.15" />
                                 <stop offset="40%" style="stop-color:#ffffff;stop-opacity:0" />
                             </linearGradient>
                             <linearGradient id="standGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#111;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#444;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#111;stop-opacity:1" />
+                                <stop offset="0%" style="stop-color:#222;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#555;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#222;stop-opacity:1" />
                             </linearGradient>
                         </defs>
 
                         <path d="M180,280 L320,280 L340,300 L160,300 Z" fill="url(#standGrad)" />
-                        <rect x="220" y="280" width="60" height="15" fill="#222" />
+                        <rect x="220" y="280" width="60" height="15" fill="#111" />
 
-                        <rect x="20" y="20" width="460" height="260" rx="8" fill="#1d1d1f" stroke="#333" stroke-width="2" />
+                        <rect x="20" y="20" width="460" height="260" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
                         
                         <rect x="30" y="30" width="440" height="240" rx="4" fill="url(#screenGrad)" />
 
-                        <rect x="50" y="50" width="400" height="120" rx="4" fill="#333" opacity="0.5" />
-                        <rect x="50" y="50" width="400" height="120" rx="4" fill="url(#glassReflect)" />
+                        <rect x="50" y="50" width="400" height="120" rx="8" fill="rgba(255,255,255,0.1)" />
+                        <rect x="50" y="50" width="400" height="120" rx="8" fill="url(#glassReflect)" />
                         
-                        <rect x="50" y="190" width="80" height="60" rx="4" fill="#0071e3" />
-                        <rect x="140" y="190" width="80" height="60" rx="4" fill="#333" opacity="0.6" />
-                        <rect x="230" y="190" width="80" height="60" rx="4" fill="#333" opacity="0.6" />
-                        <rect x="320" y="190" width="80" height="60" rx="4" fill="#333" opacity="0.6" />
+                        <rect x="50" y="190" width="80" height="60" rx="8" fill="#0A84FF" />
+                        <rect x="140" y="190" width="80" height="60" rx="8" fill="rgba(255,255,255,0.1)" />
+                        <rect x="230" y="190" width="80" height="60" rx="8" fill="rgba(255,255,255,0.1)" />
+                        <rect x="320" y="190" width="80" height="60" rx="8" fill="rgba(255,255,255,0.1)" />
 
-                        <circle cx="250" cy="272" r="1.5" fill="#fff" opacity="0.8" />
-                        
-                        <path d="M30,30 L470,30 L470,150 Q250,200 30,150 Z" fill="url(#glassReflect)" opacity="0.3" />
+                        <path d="M30,30 L470,30 L470,150 Q250,200 30,150 Z" fill="url(#glassReflect)" />
                     </svg>
                 </div>
             </div>
 
-            <div class="card">
-                <div>
-                    <p class="eyebrow" style="color: var(--accent-blue);">APPS</p>
+            <div class="glass-card card-half reveal">
+                <div style="text-align: center;">
+                    <p class="eyebrow">APPS</p>
                     <h2>Free Apps.</h2>
-                    <p>Netflix mods, ad-free YouTube, and other premium mod APKs for TV.</p>
+                    <p>Netflix mods, ad-free YouTube, and essential APKs.</p>
                 </div>
-                <div class="apps-stage float-anim">
+                <div class="apps-stage">
                     <div class="app-icon a1"></div>
                     <div class="app-icon a2"></div>
                     <div class="app-icon a3"></div>
@@ -233,37 +246,61 @@
                 </div>
             </div>
 
-            <div class="card">
-                <div>
+            <div class="glass-card card-half reveal">
+                <div style="text-align: center;">
                     <p class="eyebrow" style="color: var(--accent-green);">PERFORMANCE</p>
                     <h2>Optimization.</h2>
-                    <p>Debloat tools for android TV, Firestick, and Mi Box.</p>
+                    <p>Debloat tools for TCL, Firestick, and Mi Box.</p>
                 </div>
                 <div style="width:140px; height:140px; margin: 40px auto 0; position: relative;">
                     <svg viewBox="0 0 100 100" style="transform: rotate(-90deg); width:100%; height:100%;">
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e5e5" stroke-width="8" />
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#34c759" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="60" stroke-linecap="round" />
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8" />
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="var(--accent-green)" stroke-width="8" stroke-dasharray="251" stroke-dashoffset="60" stroke-linecap="round" />
                     </svg>
                     <div style="position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:700; color:var(--accent-green);">FAST</div>
                 </div>
             </div>
 
-            <div class="card card-blue">
-                <div>
-                    <h2 style="color: white;">Join 6,400+ Members.</h2>
-                    <p style="color: rgba(255,255,255,0.9);">Discuss TCL, Firestick, and Smart TV setups with experts.</p>
-                </div>
-                <div style="font-size: 80px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));">💬</div>
-            </div>
         </div>
 
-        <div class="footer-cta">
-            <h2>Ready to start?</h2>
-            <p style="margin-top: 15px; color: #86868b; font-size: 19px;">It's completely free to join.</p>
+        <div class="footer-cta reveal">
+            <h2 style="font-size: 48px; font-weight: 700;">Ready to start?</h2>
+            <p style="margin-top: 15px; color: var(--text-muted); font-size: 21px;">It's completely free to join.</p>
             <a href="https://t.me/androidTV_tools" class="cta-btn">Join Telegram Channel</a>
-            <p style="margin-top: 40px; font-size: 12px; color: #86868b;">© 2026 Android TV Tools. Verified and Secure.</p>
+            <p style="margin-top: 60px; font-size: 12px; color: var(--text-muted);">© 2026 Android TV Tools. Verified and Secure.</p>
         </div>
 
     </main>
+
+    <script>
+        // 1. Parallax Scroll Engine
+        window.addEventListener('scroll', () => {
+            // Update the CSS variable based on how far down the user scrolls
+            document.documentElement.style.setProperty('--scroll', window.scrollY);
+        });
+
+        // 2. Intersection Observer (The "Flying" Reveal Effect)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Triggers when 15% of the card is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add the 'visible' class to trigger CSS animation
+                    entry.target.classList.add('visible');
+                    // Stop observing once it has animated in
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Find all elements with the 'reveal' class and observe them
+        document.querySelectorAll('.reveal').forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
