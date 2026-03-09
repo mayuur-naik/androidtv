@@ -26,7 +26,6 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Lenis Smooth Scroll Requirement */
         html.lenis { height: auto; }
         .lenis.lenis-smooth { scroll-behavior: auto; }
         .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
@@ -61,7 +60,7 @@
         }
         .logo { font-weight: 800; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
         
-        /* --- HERO SECTION & IMMEDIATE CTA (Modified for Mobile UX) --- */
+        /* --- HERO SECTION & IMMEDIATE CTA --- */
         .hero { 
             min-height: 100vh; display: flex; flex-direction: column; 
             justify-content: center; padding-top: 100px; padding-bottom: 60px;
@@ -88,6 +87,7 @@
             box-shadow: 0 15px 30px rgba(10, 132, 255, 0.4);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             display: inline-flex; align-items: center; gap: 10px;
+            justify-content: center;
         }
         .primary-cta:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 20px 40px rgba(191, 90, 242, 0.5); }
 
@@ -107,9 +107,11 @@
         .app-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
         
         .app-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        
+        /* Updated Icon Colors */
         .icon-yt { background: rgba(255, 0, 0, 0.1); box-shadow: 0 0 20px rgba(255,0,0,0.2); }
         .icon-nf { background: rgba(229, 9, 20, 0.1); box-shadow: 0 0 20px rgba(229,9,20,0.2); }
-        .icon-hs { background: rgba(21, 200, 42, 0.1); box-shadow: 0 0 20px rgba(21,200,42,0.2); }
+        .icon-sl { background: linear-gradient(135deg, #f0145a, #fc6027); box-shadow: 0 0 20px rgba(240,20,90,0.3); }
         .icon-sp { background: rgba(30, 215, 96, 0.1); box-shadow: 0 0 20px rgba(30,215,96,0.2); }
 
         .app-card h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 4px; }
@@ -123,7 +125,7 @@
         }
         .app-card:hover .dl-btn { background: white; color: black; }
 
-        /* --- EXPANDED BENTO GRID (THE STACK FIX) --- */
+        /* --- EXPANDED BENTO GRID --- */
         .section-padding { padding: 80px 0 120px; }
         .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
         
@@ -135,7 +137,6 @@
             display: flex; flex-direction: column; justify-content: center;
         }
         
-        /* Fixed Grid Columns: Stacking one after another */
         .col-12 { grid-column: span 12; min-height: 400px; }
         .col-12.bento-card { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; }
         
@@ -143,20 +144,17 @@
         .bento-card p { font-size: 1.25rem; color: var(--text-dim); line-height: 1.6; max-width: 600px; z-index: 2;}
         .tag { display: inline-block; padding: 8px 16px; border: 1px solid var(--text-dim); border-radius: 100px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 30px; width: fit-content; z-index: 2;}
 
-        /* --- VISUAL VECTORS (Modified for Zero Overlap) --- */
+        /* --- VISUAL VECTORS --- */
         .visual-container { margin-top: 40px; width: 100%; position: relative; z-index: 1; display: flex; align-items: center; justify-content: flex-end;}
         
-        /* Card 1: Portal Ring */
         .portal-ring { width: 250px; height: 250px; border-radius: 50%; border: 2px dashed var(--neon-blue); animation: spin 20s linear infinite; filter: drop-shadow(0 0 30px rgba(10,132,255,0.3));}
         .portal-ring::before { content: ''; position: absolute; inset: 20px; border-radius: 50%; border: 1px solid var(--neon-purple); animation: spin 15s linear infinite reverse;}
         
-        /* Card 2: App Stacks */
         .app-stack { width: 200px; height: 200px; position: relative; transform: rotateX(60deg) rotateZ(-45deg); transform-style: preserve-3d; }
         .stack-layer { position: absolute; inset: 0; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); animation: floatStack 4s ease-in-out infinite alternate; }
         .stack-layer:nth-child(1) { background: rgba(191, 90, 242, 0.2); transform: translateZ(0); }
         .stack-layer:nth-child(2) { background: rgba(10, 132, 255, 0.2); transform: translateZ(40px); animation-delay: 0.5s;}
         
-        /* Card 3: Speed Lines (Modified for Zero Overlap) */
         .speed-bars { display: flex; gap: 12px; align-items: flex-end; height: 150px; margin-top: 40px;}
         .s-bar { width: 15px; background: var(--neon-green); border-radius: 4px; animation: pulseSpeed 1s ease-in-out infinite alternate; box-shadow: 0 0 20px rgba(48,209,88,0.4);}
         .s-bar:nth-child(2) { animation-delay: 0.2s; } .s-bar:nth-child(3) { animation-delay: 0.4s; } .s-bar:nth-child(4) { animation-delay: 0.1s; }
@@ -175,13 +173,17 @@
         }
         .huge-btn:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 40px rgba(255,255,255,0.2); }
 
-        /* --- RESPONSIVE --- */
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 900px) {
             .bento-card { padding: 40px 24px; min-height: auto; }
             .bento-card h3 { font-size: 2.2rem; }
             .hero-btn-group { flex-direction: column; align-items: flex-start; }
             .primary-cta { width: 100%; justify-content: center; }
-            .visual-container { display: none; /* Hide heavy vectors on small mobile */ }
+            .visual-container { display: none; }
+        }
+        @media (max-width: 480px) {
+            .app-dock { grid-template-columns: 1fr; }
+            .section-padding { padding: 40px 0 80px; }
         }
     </style>
 </head>
@@ -234,12 +236,23 @@
                     </div>
 
                     <div class="app-card">
-                        <div class="app-icon icon-hs">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#15c82a"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <div class="app-icon icon-sl">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
                         </div>
                         <div>
-                            <h4>Hotstar Premium</h4>
-                            <p>Live Sports + 4K VIP</p>
+                            <h4>SonyLIV Mod</h4>
+                            <p>Premium Shows Unlocked</p>
+                        </div>
+                        <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon icon-sp">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#1ED760"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.6 14.4c-.16.27-.51.36-.78.2-2.14-1.31-4.83-1.6-8.01-.88-.31.07-.62-.13-.69-.44-.07-.31.13-.62.44-.69 3.49-.79 6.47-.46 8.84 1.03.27.16.35.51.2.78zm1.09-2.45c-.21.33-.64.44-.97.23-2.43-1.5-6.17-1.93-9.15-1.06-.38.11-.77-.11-.88-.49-.11-.38.11-.77.49-.88 3.43-.99 7.56-.51 10.28 1.17.33.21.44.64.23.97zm.12-2.55c-2.91-1.73-7.7-1.89-10.47-1.04-.45.14-.93-.11-1.07-.56-.14-.45.11-.93.56-1.07 3.25-.99 8.56-.81 11.96 1.21.4.24.53.76.29 1.16-.24.4-.76.53-1.16.29z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Spotify TV</h4>
+                            <p>No Audio Ads + Skips</p>
                         </div>
                         <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
                     </div>
