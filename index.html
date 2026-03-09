@@ -87,6 +87,7 @@
             box-shadow: 0 15px 30px rgba(10, 132, 255, 0.4);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             display: inline-flex; align-items: center; gap: 10px;
+            justify-content: center;
         }
         .primary-cta:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 20px 40px rgba(191, 90, 242, 0.5); }
 
@@ -122,7 +123,7 @@
         }
         .app-card:hover .dl-btn { background: white; color: black; }
 
-        /* --- EXPANDED BENTO GRID (SEO SCROLL OPTIMIZATION) --- */
+        /* --- EXPANDED BENTO GRID --- */
         .section-padding { padding: 80px 0 120px; }
         .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
         
@@ -134,16 +135,16 @@
             display: flex; flex-direction: column; justify-content: center;
         }
         
-        /* Expanded Heights for Scroll Depth */
+        /* Desktop Grid Columns */
         .col-12 { grid-column: span 12; min-height: 400px; }
         .col-6 { grid-column: span 6; min-height: 450px; }
         
-        .bento-card h3 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.03em; z-index: 2;}
-        .bento-card p { font-size: 1.25rem; color: var(--text-dim); line-height: 1.6; max-width: 600px; z-index: 2;}
+        .bento-card h3 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 20px; letter-spacing: -0.03em; z-index: 2;}
+        .bento-card p { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-dim); line-height: 1.6; max-width: 600px; z-index: 2;}
         .tag { display: inline-block; padding: 8px 16px; border: 1px solid var(--text-dim); border-radius: 100px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 30px; width: fit-content; z-index: 2;}
 
         /* --- VISUAL VECTORS FOR EXPANDED CARDS --- */
-        .visual-bg { position: absolute; right: 10%; top: 50%; transform: translateY(-50%); z-index: 1; opacity: 0.6; pointer-events: none; }
+        .visual-bg { position: absolute; right: 10%; top: 50%; transform: translateY(-50%); z-index: 1; opacity: 0.6; pointer-events: none; display: flex; align-items: center; justify-content: center;}
         
         /* Card 1: Portal Ring */
         .portal-ring { width: 250px; height: 250px; border-radius: 50%; border: 2px dashed var(--neon-blue); animation: spin 20s linear infinite; filter: drop-shadow(0 0 30px rgba(10,132,255,0.3));}
@@ -166,21 +167,53 @@
 
         /* --- FOOTER CTA --- */
         .footer-cta { text-align: center; padding: 100px 0 150px; }
-        .footer-cta h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 40px; }
+        .footer-cta h2 { font-size: clamp(2rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 40px; }
         .huge-btn {
             display: inline-block; background: white; color: black; padding: 24px 64px;
-            border-radius: 100px; font-size: 1.5rem; font-weight: 600; text-decoration: none;
+            border-radius: 100px; font-size: clamp(1.1rem, 3vw, 1.5rem); font-weight: 600; text-decoration: none;
             transition: transform 0.4s, box-shadow 0.4s;
         }
         .huge-btn:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 40px rgba(255,255,255,0.2); }
 
-        /* --- RESPONSIVE --- */
+        /* =========================================
+           MOBILE OPTIMIZATION (THE FIX)
+           ========================================= */
         @media (max-width: 900px) {
+            /* Force all grid columns to stack vertically */
             .col-12, .col-6 { grid-column: span 12; }
+            
+            /* Reduce massive desktop padding */
             .bento-card { padding: 40px 24px; min-height: auto; }
-            .hero-btn-group { flex-direction: column; align-items: flex-start; }
-            .primary-cta { width: 100%; justify-content: center; }
-            .visual-bg { display: none; /* Hide heavy vectors on small mobile for cleaner text reading */ }
+            
+            /* Stretch buttons for mobile thumbs */
+            .hero-btn-group { flex-direction: column; align-items: stretch; width: 100%; }
+            .primary-cta { width: 100%; }
+            .huge-btn { width: 100%; padding: 20px 24px; }
+            
+            /* Re-architect the 3D graphics for mobile */
+            /* Instead of absolute positioning on the right, push them to the bottom of the card */
+            .visual-bg {
+                position: relative;
+                right: auto !important;
+                top: auto !important;
+                transform: none !important;
+                align-self: center;
+                margin-top: 40px;
+                height: 160px;
+                opacity: 0.8;
+            }
+            
+            /* Scale down the 3D elements so they fit phone screens */
+            .portal-ring { width: 140px; height: 140px; }
+            .portal-ring::before { inset: 15px; }
+            .app-stack { transform: rotateX(60deg) rotateZ(-45deg) scale(0.6); }
+            .speed-bars { height: 100px; }
+        }
+
+        /* Tiny Mobile Phones */
+        @media (max-width: 480px) {
+            .app-dock { grid-template-columns: 1fr; } /* Stack apps 1 by 1 */
+            .section-padding { padding: 40px 0 80px; }
         }
     </style>
 </head>
@@ -212,7 +245,7 @@
                     
                     <div class="app-card">
                         <div class="app-icon icon-yt">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385-8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                         </div>
                         <div>
                             <h4>SmartTube</h4>
