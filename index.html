@@ -1,395 +1,252 @@
 <!DOCTYPE html>
-<html lang="en" class="smooth-scroll">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Android TV Mod Apps | Ads free Premium mods for tv</title>
-    <meta name="description" content="Unrivaled Android TV apps and mods. We meticulously curate essential utilities, premium ad-free apps, and exclusive content. Join our Telegram portal.">
+    <title>Android TV Apps & Tools | The Ultimate Mod Portal</title>
+    <meta name="description" content="Unrivaled Android TV apps and mods. We meticulously curate essential utilities, premium ad-free apps, and exclusive content.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        /* =========================================
-           1. CORE ENGINE & HARDWARE ACCELERATION
-           ========================================= */
+        /* --- CORE DESIGN SYSTEM --- */
         :root {
-            --bg-void: #030305;
-            --glass-bg: rgba(20, 20, 25, 0.4);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --bg: #000000;
             --text-main: #ffffff;
-            --text-muted: #86868b;
-            --neon-blue: #0A84FF;
-            --neon-purple: #BF5AF2;
-            --neon-green: #30D158;
-            --radius-lg: 32px;
-            --radius-sm: 16px;
+            --text-dim: #888888;
+            --accent: #2563eb;
+            --glass: rgba(20, 20, 20, 0.4);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        html.smooth-scroll { scroll-behavior: smooth; }
-        a { text-decoration: none !important; color: inherit; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Lenis Smooth Scroll Requirement */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-scrolling iframe { pointer-events: none; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
-            background-color: var(--bg-void);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
             color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            line-height: 1.5;
         }
 
-        /* =========================================
-           2. DYNAMIC AMBIENT MESH (PARALLAX BG)
-           ========================================= */
-        .mesh-container {
+        /* --- 3D WEBGL CANVAS --- */
+        #webgl-canvas {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: 0; pointer-events: none;
-            /* GPU Accelerated */
-            transform: translateZ(0); will-change: transform;
-        }
-        .mesh-orb {
-            position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.5;
-            animation: breathe 15s infinite alternate ease-in-out;
-            will-change: transform;
-        }
-        .orb-1 { width: 60vw; height: 60vw; background: var(--neon-blue); top: -20%; left: -10%; }
-        .orb-2 { width: 50vw; height: 50vw; background: var(--neon-purple); bottom: -10%; right: -20%; animation-delay: -5s; }
-        .orb-3 { width: 40vw; height: 40vw; background: #FF375F; top: 40%; left: 40%; animation-delay: -10s; opacity: 0.3; }
-
-        @keyframes breathe {
-            0% { transform: scale(1) translate3d(0,0,0); }
-            100% { transform: scale(1.3) translate3d(5vw, 5vh, 0); }
         }
 
-        /* Content strictly above the background */
-        .content-layer { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; }
+        /* --- CONTENT WRAPPER --- */
+        .main-content {
+            position: relative; z-index: 10;
+            width: 100%; max-width: 1200px;
+            margin: 0 auto; padding: 0 20px;
+        }
 
-        /* =========================================
-           3. FROSTED NAVIGATION
-           ========================================= */
+        /* --- NAV --- */
         nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000; height: 64px;
-            background: rgba(3, 3, 5, 0.5);
-            backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px);
-            border-bottom: 1px solid var(--glass-border);
-            transform: translateZ(0);
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+            padding: 24px 0; mix-blend-mode: difference;
         }
         .nav-inner {
-            max-width: 1200px; margin: 0 auto; height: 100%;
-            display: flex; justify-content: space-between; align-items: center; padding: 0 24px;
+            max-width: 1200px; margin: 0 auto; padding: 0 20px;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; background: linear-gradient(90deg, #fff, #aaa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .join-btn-nav {
-            background: var(--text-main); color: #000; padding: 8px 24px; border-radius: 980px; font-weight: 700; font-size: 14px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2); transition: all 0.3s ease;
+        .logo { font-weight: 800; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+        .join-btn {
+            background: white; color: black; padding: 10px 24px; border-radius: 100px;
+            font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .join-btn-nav:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,255,255,0.4); }
+        .join-btn:hover { transform: scale(1.05); }
 
-        /* =========================================
-           4. SCROLL ANIMATION CLASSES
-           ========================================= */
-        .reveal {
-            opacity: 0; transform: translate3d(0, 60px, 0);
-            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
+        /* --- HERO --- */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 7rem); font-weight: 800; line-height: 1;
+            letter-spacing: -0.04em; margin-bottom: 24px;
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%); /* For GSAP Reveal */
         }
-        .reveal.in-view { opacity: 1; transform: translate3d(0, 0, 0); }
-        .del-1 { transition-delay: 0.1s; } .del-2 { transition-delay: 0.2s; } .del-3 { transition-delay: 0.3s; }
+        .hero p {
+            font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--text-dim);
+            max-width: 800px; line-height: 1.5; font-weight: 300;
+            opacity: 0; transform: translateY(30px); /* For GSAP Reveal */
+        }
 
-        /* =========================================
-           5. MAIN LAYOUT & TYPOGRAPHY
-           ========================================= */
-        main { width: 100%; max-width: 1200px; padding: 140px 24px 80px; perspective: 1500px; }
+        /* --- BENTO GRID (Glassmorphism) --- */
+        .section-padding { padding: 120px 0; }
+        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
         
-        .hero-section { text-align: center; margin-bottom: 120px; }
-        h1 {
-            font-size: 8vw; font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 24px;
-            background: linear-gradient(180deg, #ffffff 0%, #737373 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        .bento-card {
+            background: var(--glass); border: 1px solid var(--border);
+            border-radius: 24px; padding: 48px; position: relative; overflow: hidden;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            opacity: 0; transform: translateY(50px); /* For GSAP ScrollTrigger */
         }
-        .subtitle { font-size: 28px; color: var(--neon-blue); font-weight: 600; margin-bottom: 20px; letter-spacing: -0.02em; }
-        .hero-desc { font-size: 21px; color: var(--text-muted); max-width: 800px; margin: 0 auto; line-height: 1.6; }
-
-        /* =========================================
-           6. LIQUID GLASS BENTO GRID
-           ========================================= */
-        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-bottom: 80px; }
-
-        .glass-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-lg);
-            padding: 48px; position: relative; overflow: hidden;
-            display: flex; flex-direction: column; justify-content: space-between;
-            backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
-            transform: translate3d(0,0,0); will-change: transform, box-shadow;
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s, border-color 0.5s;
-        }
-        .glass-card:hover {
-            transform: translate3d(0, -10px, 0) scale(1.02);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 0 40px rgba(255,255,255,0.05);
-            border-color: rgba(255,255,255,0.2); z-index: 20;
+        .bento-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
+            z-index: 0; pointer-events: none; transition: opacity 0.3s;
         }
 
-        /* Grid Sizing */
-        .span-12 { grid-column: span 12; height: 650px; text-align: center; align-items: center; }
-        .span-8 { grid-column: span 8; height: 450px; }
-        .span-4 { grid-column: span 4; height: 450px; }
-        .span-6 { grid-column: span 6; height: 400px; }
+        .col-8 { grid-column: span 8; }
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+        .col-12 { grid-column: span 12; }
 
-        .glass-card h2 { font-size: 38px; font-weight: 700; line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.02em; }
-        .glass-card p { font-size: 18px; color: var(--text-muted); line-height: 1.5; }
-        .span-12 p { max-width: 600px; margin: 0 auto; }
-        .eyebrow { font-size: 13px; font-weight: 800; margin-bottom: 16px; letter-spacing: 0.15em; text-transform: uppercase; }
+        .bento-card h3 { font-size: 2rem; font-weight: 600; margin-bottom: 16px; position: relative; z-index: 1; letter-spacing: -0.02em;}
+        .bento-card p { font-size: 1.1rem; color: var(--text-dim); line-height: 1.6; position: relative; z-index: 1;}
+        .tag { display: inline-block; padding: 6px 12px; border: 1px solid var(--text-dim); border-radius: 100px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; position: relative; z-index: 1;}
 
-        /* =========================================
-           7. HYPER-REALISTIC 3D VECTORS (CSS/SVG)
-           ========================================= */
+        /* --- ABSTRACT VECTORS --- */
+        .vector-container { margin-top: 40px; height: 200px; position: relative; z-index: 1; display: flex; align-items: center; justify-content: center;}
         
-        /* A. The 3D Portal TV (Hero Graphic) */
-        .portal-tv-stage {
-            width: 100%; height: 350px; perspective: 2000px;
-            display: flex; justify-content: center; align-items: center; margin-top: 40px;
-        }
-        .tv-chassis {
-            width: 400px; height: 240px;
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
-            transform-style: preserve-3d;
-            transform: rotateX(15deg) rotateY(-15deg) translateZ(0);
-            box-shadow: -40px 40px 80px rgba(0,0,0,0.9), inset 0 0 30px rgba(255,255,255,0.05);
-            animation: floatTV 8s ease-in-out infinite; will-change: transform;
-        }
-        .tv-screen-glow {
-            position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
-            background: radial-gradient(circle at center, rgba(10, 132, 255, 0.4), transparent 70%), #050505;
-            border-radius: 10px; transform: translateZ(20px);
-            box-shadow: 0 0 60px rgba(10, 132, 255, 0.5), inset 0 0 20px rgba(0,0,0,1);
-            overflow: hidden; display: flex; align-items: center; justify-content: center;
-        }
-        .tv-data-ring {
-            width: 120px; height: 120px; border-radius: 50%;
-            border: 2px dashed rgba(255,255,255,0.3); border-top-color: var(--neon-blue);
-            animation: spin 10s linear infinite; transform: translateZ(30px);
-        }
-        @keyframes floatTV {
-            0%, 100% { transform: rotateX(15deg) rotateY(-15deg) translate3d(0, 0, 0); }
-            50% { transform: rotateX(15deg) rotateY(-15deg) translate3d(0, -20px, 40px); }
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        /* B. Isometric App Stack */
-        .app-stack-stage { perspective: 1200px; display: flex; justify-content: center; align-items: center; height: 100%; padding-top: 40px; }
-        .app-layer {
-            width: 140px; height: 140px; position: absolute; border-radius: var(--radius-sm);
-            transform-style: preserve-3d;
-            box-shadow: -20px 20px 40px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2);
-            animation: stackBreathe 6s ease-in-out infinite;
-        }
-        .layer-1 { background: linear-gradient(135deg, rgba(10,132,255,0.8), rgba(191,90,242,0.8)); transform: rotateX(60deg) rotateZ(-45deg) translateZ(0); }
-        .layer-2 { background: linear-gradient(135deg, rgba(48,209,88,0.8), rgba(10,132,255,0.8)); transform: rotateX(60deg) rotateZ(-45deg) translateZ(40px); animation-delay: 0.2s; }
-        .layer-3 { background: linear-gradient(135deg, #FF375F, #BF5AF2); transform: rotateX(60deg) rotateZ(-45deg) translateZ(80px); animation-delay: 0.4s; }
-
-        @keyframes stackBreathe {
-            0%, 100% { transform: rotateX(60deg) rotateZ(-45deg) translateZ(var(--z-start)); }
-            50% { transform: rotateX(60deg) rotateZ(-45deg) translateZ(calc(var(--z-start) + 30px)); }
-        }
-
-        /* C. Holographic Speed Gauge */
-        .gauge-stage { position: relative; width: 180px; height: 180px; margin: 40px auto 0; }
-        .gauge-svg { width: 100%; height: 100%; transform: rotate(-90deg); filter: drop-shadow(0 0 20px rgba(48,209,88,0.5)); }
-        .gauge-bg { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 8; }
-        .gauge-fill { fill: none; stroke: var(--neon-green); stroke-width: 8; stroke-dasharray: 283; stroke-dashoffset: 283; stroke-linecap: round; }
-        .gauge-stage.in-view .gauge-fill { animation: fillGauge 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.5s; }
+        /* 3D Wireframe Globe */
+        .wire-globe { width: 150px; height: 150px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); position: relative; transform-style: preserve-3d; animation: rotate 10s linear infinite; }
+        .wire-globe::before, .wire-globe::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); }
+        .wire-globe::before { transform: rotateX(60deg); } .wire-globe::after { transform: rotateY(60deg); }
         
-        @keyframes fillGauge { to { stroke-dashoffset: 60; } }
+        /* Holographic Data Bars */
+        .data-bars { display: flex; gap: 8px; align-items: flex-end; height: 100px; }
+        .bar { width: 20px; background: white; border-radius: 4px; animation: pulseBar 1.5s ease-in-out infinite alternate; }
+        .bar:nth-child(2) { animation-delay: 0.2s; } .bar:nth-child(3) { animation-delay: 0.4s; }
 
-        /* =========================================
-           8. TEXT BLOCK SECTION
-           ========================================= */
-        .text-section { text-align: center; padding: 80px 20px; max-width: 900px; margin: 0 auto; }
-        .text-section p { font-size: 24px; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; }
-        .text-section strong { color: var(--text-main); font-weight: 600; }
+        @keyframes rotate { 100% { transform: rotateX(360deg) rotateY(360deg); } }
+        @keyframes pulseBar { 0% { height: 20px; opacity: 0.3; } 100% { height: 100px; opacity: 1; } }
 
-        /* =========================================
-           9. FOOTER & EXTREME CTA
-           ========================================= */
-        .footer-cta { padding: 120px 20px; text-align: center; position: relative; }
-        .footer-cta h2 { font-size: 64px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 24px; }
-        .ultimate-btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-            color: #fff; padding: 24px 56px; border-radius: 980px;
-            font-size: 21px; font-weight: 800; letter-spacing: 1px;
-            box-shadow: 0 20px 50px rgba(10, 132, 255, 0.4);
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        /* --- FOOTER CTA --- */
+        .footer-cta { text-align: center; padding: 150px 0; }
+        .footer-cta h2 { font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 40px; }
+        .huge-btn {
+            display: inline-block; background: white; color: black; padding: 24px 64px;
+            border-radius: 100px; font-size: 1.5rem; font-weight: 600; text-decoration: none;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
         }
-        .ultimate-btn:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 30px 60px rgba(191, 90, 242, 0.6);
-            letter-spacing: 2px;
-        }
+        .huge-btn:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 40px rgba(255,255,255,0.2); }
 
-        /* =========================================
-           10. MOBILE OPTIMIZATION
-           ========================================= */
-        @media (max-width: 992px) {
-            h1 { font-size: 56px; }
-            .span-12, .span-8, .span-4, .span-6 { grid-column: span 12; height: auto; min-height: 450px; }
-            .tv-chassis { width: 300px; height: 180px; }
-            .footer-cta h2 { font-size: 48px; }
-            .ultimate-btn { padding: 20px 40px; font-size: 18px; }
-        }
-        @media (max-width: 480px) {
-            h1 { font-size: 42px; }
-            .subtitle { font-size: 20px; }
-            .glass-card { padding: 32px; }
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .col-8, .col-4, .col-6 { grid-column: span 12; }
+            .bento-card { padding: 32px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="mesh-container" id="parallax-bg">
-        <div class="mesh-orb orb-1"></div>
-        <div class="mesh-orb orb-2"></div>
-        <div class="mesh-orb orb-3"></div>
-    </div>
+    <div id="webgl-canvas"></div>
 
-    <div class="content-layer">
-        
-        <nav>
-            <div class="nav-inner">
-                <span class="logo">Android TV Tools</span>
-                <a href="https://t.me/androidTV_tools" class="join-btn-nav">Join </a>
-            </div>
-        </nav>
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">Android TV Tools</div>
+            <a href="https://t.me/androidTV_tools" class="join-btn">Join 6.5k+ Members</a>
+        </div>
+    </nav>
 
-        <main>
-            <section class="hero-section reveal">
-                <h1>Android TV Apps & Tools</h1>
-                <p class="subtitle">The ultimate source for elevating your Smart TV experience.</p>
-                <p class="hero-desc">Unrivaled in the rich tapestry of vital Android TV apps and mods, it's not merely a channel; it's a dedicated portal to elevate your experience. We ensure a safe and glitch-free environment, backed by constant updates. Welcome to a world where we don't just upgrade your experience; we transform it.</p>
-            </section>
+    <div class="main-content">
+        <section class="hero">
+            <h1 class="hero-title">Elevate Your<br>Smart TV.</h1>
+            <p class="hero-subtitle">Unrivaled in the rich tapestry of vital Android TV apps and mods, it's not merely a channel; it's a dedicated portal to elevate your Android TV experience.</p>
+        </section>
 
+        <section class="section-padding">
             <div class="grid">
                 
-                <div class="glass-card span-12 reveal del-1">
-                    <div>
-                        <p class="eyebrow" style="color: var(--neon-blue);">THE PORTAL</p>
-                        <h2>A Dedicated Telegram Channel.</h2>
-                        <p>We meticulously curate everything from essential utilities and powerful modifications to the latest apps and exclusive content, ensuring you always have the best at your fingertips.</p>
+                <div class="bento-card col-8">
+                    <span class="tag">The Portal</span>
+                    <h3>Premium Mod & Ad-Free Apps</h3>
+                    <p>Experience the best of streaming services, utility tools, and entertainment apps, often ad-free, premium, and fully unlocked. We ensure a safe and glitch-free experience.</p>
+                    <div class="vector-container">
+                        <div class="wire-globe"></div>
                     </div>
-                    <div class="portal-tv-stage parallax-item" data-speed="0.05">
-                        <div class="tv-chassis">
-                            <div class="tv-screen-glow">
-                                <div class="tv-data-ring"></div>
-                            </div>
+                </div>
+
+                <div class="bento-card col-4">
+                    <span class="tag">Performance</span>
+                    <h3>Optimization</h3>
+                    <p>Enhance your TV's performance, manage files efficiently, and customize your interface with unique utility tools.</p>
+                    <div class="vector-container">
+                        <div class="data-bars">
+                            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="glass-card span-8 reveal del-2">
-                    <p class="eyebrow" style="color: var(--neon-purple);">PREMIUM & AD-FREE</p>
-                    <h2>Premium Mod Apps.</h2>
-                    <p>Experience the best of streaming services, utility tools, and entertainment apps, often ad-free, premium, and fully unlocked.</p>
-                    
-                    <div class="app-stack-stage parallax-item" data-speed="0.03">
-                        <div class="app-layer layer-1" style="--z-start: 0px;"></div>
-                        <div class="app-layer layer-2" style="--z-start: 40px;"></div>
-                        <div class="app-layer layer-3" style="--z-start: 80px;"></div>
-                    </div>
+                <div class="bento-card col-6">
+                    <span class="tag">Knowledge Base</span>
+                    <h3>Exclusive Guides</h3>
+                    <p>Access comprehensive, simple guides to transform your Android TV into a powerhouse. Stay informed with real-time updates on new apps, bug fixes, and emerging trends.</p>
                 </div>
 
-                <div class="glass-card span-4 reveal del-3 gauge-stage-container">
-                    <p class="eyebrow" style="color: var(--neon-green);">ESSENTIAL TOOLS</p>
-                    <h2>Optimization.</h2>
-                    <p>Enhance your Android TV's performance and manage files efficiently.</p>
-                    
-                    <div class="gauge-stage">
-                        <svg class="gauge-svg" viewBox="0 0 100 100">
-                            <circle class="gauge-bg" cx="50" cy="50" r="45" />
-                            <circle class="gauge-fill" cx="50" cy="50" r="45" />
-                        </svg>
-                        <div style="position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:800; font-size: 20px; color:var(--text-main);">BOOST</div>
-                    </div>
-                </div>
-
-                <div class="glass-card span-6 reveal del-1">
-                    <p class="eyebrow" style="color: #FF375F;">KNOWLEDGE BASE</p>
-                    <h2>Guides & Hot News.</h2>
-                    <p>Access comprehensive, simple tutorials to transform your TV into a powerhouse. Stay informed with real-time updates on new apps, bug fixes, and emerging trends.</p>
-                    <div style="font-size: 100px; margin-top: auto; text-align: center; filter: drop-shadow(0 20px 30px rgba(255,55,95,0.4));">📚</div>
-                </div>
-
-                <div class="glass-card span-6 reveal del-2">
-                    <p class="eyebrow" style="color: var(--neon-blue);">THE ENTHUSIASTS</p>
-                    <h2>Vibrant Community.</h2>
+                <div class="bento-card col-6">
+                    <span class="tag">The Hub</span>
+                    <h3>Vibrant Community</h3>
                     <p>Connect with fellow users, share tips, troubleshoot issues, and get expert support. We are constantly searching and featuring only the best TV mods.</p>
-                    <div style="font-size: 100px; margin-top: auto; text-align: center; filter: drop-shadow(0 20px 30px rgba(10,132,255,0.4));">🌍</div>
                 </div>
 
             </div>
+        </section>
 
-            <section class="text-section reveal">
-                <p>Our channel offers more than just the best apps for Android TV; it's a community where enthusiasts come together to share insights, solve problems, and celebrate the world of Android TV.</p>
-                <p>Whether you’re searching for the best Android TV mod APK telegram channel, specific smart TV apps, or just looking to explore, <strong>our Telegram channel is your ultimate resource.</strong></p>
-            </section>
-
-            <section class="footer-cta reveal del-1">
-                <h2>Ready to take your Android TV to the next level?</h2>
-                <p style="font-size: 24px; color: var(--text-muted); margin-bottom: 40px;">Find us on Telegram @Androidtv_tools and experience a whole new world of TV Mod tools.</p>
-                <a href="https://t.me/androidTV_tools" class="ultimate-btn">
-                    🚀 CLICK TO JOIN ON TELEGRAM
-                </a>
-            </section>
-
-        </main>
+        <section class="footer-cta">
+            <h2>Ready to transform<br>your experience?</h2>
+            <a href="https://t.me/androidTV_tools" class="huge-btn">JOIN TELEGRAM CHANNEL</a>
+        </section>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Intersection Observer for buttery smooth scroll reveals
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                        // Special trigger for the SVG Gauge
-                        if(entry.target.classList.contains('gauge-stage-container')) {
-                            entry.target.querySelector('.gauge-stage').classList.add('in-view');
-                        }
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+        // Initialize Smooth Scrolling (Lenis)
+        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), direction: 'vertical', gestureDirection: 'vertical', smooth: true, mouseMultiplier: 1, smoothTouch: false });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
 
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // Initialize WebGL Background (Vanta Fog)
+        VANTA.FOG({
+            el: "#webgl-canvas",
+            mouseControls: true, touchControls: true, gyroControls: false,
+            minHeight: 200.00, minWidth: 200.00,
+            highlightColor: 0x111111, midtoneColor: 0x0, lowlightColor: 0x2563eb,
+            baseColor: 0x0, blurFactor: 0.90, speed: 1.50, zoom: 0.50
+        });
 
-            // 2. 60FPS Parallax Engine (Hardware Accelerated)
-            const bgMesh = document.getElementById('parallax-bg');
-            const parallaxItems = document.querySelectorAll('.parallax-item');
-            
-            let scrollY = window.scrollY;
-            let ticking = false;
+        // Initialize GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
 
-            function updateParallax() {
-                // Move background mesh
-                bgMesh.style.transform = `translate3d(0, ${scrollY * 0.15}px, 0)`;
-                
-                // Move specific 3D elements inside cards for deep parallax
-                parallaxItems.forEach(item => {
-                    const speed = item.getAttribute('data-speed') || 0.05;
-                    item.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
-                });
-                
-                ticking = false;
-            }
+        // Hero Reveal
+        const tl = gsap.timeline();
+        tl.to(".hero-title", { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", duration: 1.5, ease: "power4.out", delay: 0.2 })
+          .to(".hero-subtitle", { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=1");
 
-            window.addEventListener('scroll', () => {
-                scrollY = window.scrollY;
-                if (!ticking) {
-                    window.requestAnimationFrame(updateParallax);
-                    ticking = true;
-                }
-            }, { passive: true });
+        // Bento Grid Scroll Animation
+        gsap.utils.toArray('.bento-card').forEach((card, i) => {
+            gsap.to(card, {
+                scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" },
+                y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: i * 0.1
+            });
+        });
+
+        // Interactive Spotlight Effect on Cards
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
         });
     </script>
 </body>
