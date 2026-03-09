@@ -18,23 +18,22 @@
             --accent: #2563eb;
             --glass: rgba(20, 20, 20, 0.4);
             --border: rgba(255, 255, 255, 0.08);
+            --neon-blue: #0A84FF;
+            --neon-red: #FF375F;
+            --neon-green: #30D158;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Lenis Smooth Scroll Requirement */
         html.lenis { height: auto; }
         .lenis.lenis-smooth { scroll-behavior: auto; }
         .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
         .lenis.lenis-stopped { overflow: hidden; }
-        .lenis.lenis-scrolling iframe { pointer-events: none; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            background-color: var(--bg); color: var(--text-main);
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
         }
 
         /* --- 3D WEBGL CANVAS --- */
@@ -45,8 +44,7 @@
 
         /* --- CONTENT WRAPPER --- */
         .main-content {
-            position: relative; z-index: 10;
-            width: 100%; max-width: 1200px;
+            position: relative; z-index: 10; width: 100%; max-width: 1200px;
             margin: 0 auto; padding: 0 20px;
         }
 
@@ -60,74 +58,94 @@
             display: flex; justify-content: space-between; align-items: center;
         }
         .logo { font-weight: 800; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
-        .join-btn {
-            background: white; color: black; padding: 10px 24px; border-radius: 100px;
-            font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
-            text-decoration: none; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        
+        /* --- HERO SECTION & IMMEDIATE CTA --- */
+        .hero { 
+            min-height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; padding-top: 100px; padding-bottom: 60px;
         }
-        .join-btn:hover { transform: scale(1.05); }
-
-        /* --- HERO --- */
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 7rem); font-weight: 800; line-height: 1;
+            font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 800; line-height: 1.05;
             letter-spacing: -0.04em; margin-bottom: 24px;
-            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%); /* For GSAP Reveal */
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
         }
         .hero p {
-            font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--text-dim);
-            max-width: 800px; line-height: 1.5; font-weight: 300;
-            opacity: 0; transform: translateY(30px); /* For GSAP Reveal */
+            font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text-dim);
+            max-width: 700px; line-height: 1.5; font-weight: 300; margin-bottom: 40px;
+            opacity: 0; transform: translateY(30px);
         }
 
+        /* Primary "Above the Fold" Button */
+        .hero-btn-group {
+            opacity: 0; transform: translateY(30px); /* For GSAP */
+            display: flex; gap: 20px; align-items: center; margin-bottom: 80px;
+        }
+        .primary-cta {
+            background: linear-gradient(135deg, var(--neon-blue), #BF5AF2);
+            color: #fff; padding: 18px 40px; border-radius: 100px;
+            font-size: 1.1rem; font-weight: 700; text-decoration: none;
+            box-shadow: 0 15px 30px rgba(10, 132, 255, 0.4);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .primary-cta:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 20px 40px rgba(191, 90, 242, 0.5); }
+
+        /* --- THE APP DOCK (High Conversion UI) --- */
+        .app-dock-wrapper { opacity: 0; transform: translateY(40px); }
+        .app-dock-title { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); margin-bottom: 20px; font-weight: 600;}
+        .app-dock {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;
+        }
+        .app-card {
+            background: var(--glass); border: 1px solid var(--border);
+            border-radius: 20px; padding: 24px;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            display: flex; flex-direction: column; align-items: flex-start; gap: 16px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .app-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
+        
+        .app-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .icon-yt { background: rgba(255, 0, 0, 0.1); box-shadow: 0 0 20px rgba(255,0,0,0.2); }
+        .icon-nf { background: rgba(229, 9, 20, 0.1); box-shadow: 0 0 20px rgba(229,9,20,0.2); }
+        .icon-hs { background: rgba(21, 200, 42, 0.1); box-shadow: 0 0 20px rgba(21,200,42,0.2); }
+        .icon-sp { background: rgba(30, 215, 96, 0.1); box-shadow: 0 0 20px rgba(30,215,96,0.2); }
+
+        .app-card h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 4px; }
+        .app-card p { font-size: 0.85rem; color: var(--text-dim); margin: 0; }
+        
+        /* Direct Download Buttons */
+        .dl-btn {
+            margin-top: auto; padding: 10px 0; width: 100%; text-align: center;
+            background: rgba(255,255,255,0.05); color: white; border-radius: 8px;
+            font-size: 0.9rem; font-weight: 600; text-decoration: none; border: 1px solid var(--border);
+            transition: background 0.2s, color 0.2s;
+        }
+        .app-card:hover .dl-btn { background: white; color: black; }
+
         /* --- BENTO GRID (Glassmorphism) --- */
-        .section-padding { padding: 120px 0; }
+        .section-padding { padding: 80px 0 120px; }
         .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
         
         .bento-card {
             background: var(--glass); border: 1px solid var(--border);
             border-radius: 24px; padding: 48px; position: relative; overflow: hidden;
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            opacity: 0; transform: translateY(50px); /* For GSAP ScrollTrigger */
+            opacity: 0; transform: translateY(50px);
         }
-        .bento-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
-            z-index: 0; pointer-events: none; transition: opacity 0.3s;
-        }
-
-        .col-8 { grid-column: span 8; }
-        .col-4 { grid-column: span 4; }
-        .col-6 { grid-column: span 6; }
-        .col-12 { grid-column: span 12; }
-
-        .bento-card h3 { font-size: 2rem; font-weight: 600; margin-bottom: 16px; position: relative; z-index: 1; letter-spacing: -0.02em;}
-        .bento-card p { font-size: 1.1rem; color: var(--text-dim); line-height: 1.6; position: relative; z-index: 1;}
-        .tag { display: inline-block; padding: 6px 12px; border: 1px solid var(--text-dim); border-radius: 100px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; position: relative; z-index: 1;}
-
-        /* --- ABSTRACT VECTORS --- */
-        .vector-container { margin-top: 40px; height: 200px; position: relative; z-index: 1; display: flex; align-items: center; justify-content: center;}
+        .col-8 { grid-column: span 8; } .col-4 { grid-column: span 4; } .col-6 { grid-column: span 6; }
         
-        /* 3D Wireframe Globe */
-        .wire-globe { width: 150px; height: 150px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); position: relative; transform-style: preserve-3d; animation: rotate 10s linear infinite; }
-        .wire-globe::before, .wire-globe::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); }
-        .wire-globe::before { transform: rotateX(60deg); } .wire-globe::after { transform: rotateY(60deg); }
-        
-        /* Holographic Data Bars */
-        .data-bars { display: flex; gap: 8px; align-items: flex-end; height: 100px; }
-        .bar { width: 20px; background: white; border-radius: 4px; animation: pulseBar 1.5s ease-in-out infinite alternate; }
-        .bar:nth-child(2) { animation-delay: 0.2s; } .bar:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes rotate { 100% { transform: rotateX(360deg) rotateY(360deg); } }
-        @keyframes pulseBar { 0% { height: 20px; opacity: 0.3; } 100% { height: 100px; opacity: 1; } }
+        .bento-card h3 { font-size: 2rem; font-weight: 600; margin-bottom: 16px; letter-spacing: -0.02em;}
+        .bento-card p { font-size: 1.1rem; color: var(--text-dim); line-height: 1.6; }
+        .tag { display: inline-block; padding: 6px 12px; border: 1px solid var(--text-dim); border-radius: 100px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
 
         /* --- FOOTER CTA --- */
-        .footer-cta { text-align: center; padding: 150px 0; }
-        .footer-cta h2 { font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 40px; }
+        .footer-cta { text-align: center; padding: 100px 0 150px; }
+        .footer-cta h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 40px; }
         .huge-btn {
             display: inline-block; background: white; color: black; padding: 24px 64px;
             border-radius: 100px; font-size: 1.5rem; font-weight: 600; text-decoration: none;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+            transition: transform 0.4s, box-shadow 0.4s;
         }
         .huge-btn:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 40px rgba(255,255,255,0.2); }
 
@@ -135,6 +153,8 @@
         @media (max-width: 900px) {
             .col-8, .col-4, .col-6 { grid-column: span 12; }
             .bento-card { padding: 32px; }
+            .hero-btn-group { flex-direction: column; align-items: flex-start; }
+            .primary-cta { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -145,51 +165,86 @@
     <nav>
         <div class="nav-inner">
             <div class="logo">Android TV Tools</div>
-            <a href="https://t.me/androidTV_tools" class="join-btn">Join 6.5k+ Members</a>
         </div>
     </nav>
 
     <div class="main-content">
         <section class="hero">
             <h1 class="hero-title">Elevate Your<br>Smart TV.</h1>
-            <p class="hero-subtitle">Unrivaled in the rich tapestry of vital Android TV apps and mods, it's not merely a channel; it's a dedicated portal to elevate your Android TV experience.</p>
+            <p class="hero-subtitle">The ultimate portal for ad-free YouTube, premium streaming mods, and powerful TV optimization tools. Stop scrolling and start downloading.</p>
+            
+            <div class="hero-btn-group">
+                <a href="https://t.me/androidTV_tools" class="primary-cta">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download Mods Now
+                </a>
+            </div>
+
+            <div class="app-dock-wrapper">
+                <div class="app-dock-title">Top Requested Mods</div>
+                <div class="app-dock">
+                    
+                    <div class="app-card">
+                        <div class="app-icon icon-yt">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </div>
+                        <div>
+                            <h4>SmartTube</h4>
+                            <p>Ad-Free + SponsorBlock</p>
+                        </div>
+                        <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon icon-nf">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#E50914"><path d="M6.3 22.2V1.8h3.3l5.5 12.8V1.8h3.2v20.4h-3.3l-5.5-12.8v12.8H6.3z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Netflix TV Mod</h4>
+                            <p>Premium Unlocked</p>
+                        </div>
+                        <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon icon-hs">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#15c82a"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Hotstar Premium</h4>
+                            <p>Live Sports + 4K VIP</p>
+                        </div>
+                        <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon icon-sp">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#1ED760"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.6 14.4c-.16.27-.51.36-.78.2-2.14-1.31-4.83-1.6-8.01-.88-.31.07-.62-.13-.69-.44-.07-.31.13-.62.44-.69 3.49-.79 6.47-.46 8.84 1.03.27.16.35.51.2.78zm1.09-2.45c-.21.33-.64.44-.97.23-2.43-1.5-6.17-1.93-9.15-1.06-.38.11-.77-.11-.88-.49-.11-.38.11-.77.49-.88 3.43-.99 7.56-.51 10.28 1.17.33.21.44.64.23.97zm.12-2.55c-2.91-1.73-7.7-1.89-10.47-1.04-.45.14-.93-.11-1.07-.56-.14-.45.11-.93.56-1.07 3.25-.99 8.56-.81 11.96 1.21.4.24.53.76.29 1.16-.24.4-.76.53-1.16.29z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Spotify TV</h4>
+                            <p>No Audio Ads + Skips</p>
+                        </div>
+                        <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
+                    </div>
+
+                </div>
+            </div>
         </section>
 
         <section class="section-padding">
             <div class="grid">
-                
                 <div class="bento-card col-8">
                     <span class="tag">The Portal</span>
                     <h3>Premium Mod & Ad-Free Apps</h3>
                     <p>Experience the best of streaming services, utility tools, and entertainment apps, often ad-free, premium, and fully unlocked. We ensure a safe and glitch-free experience.</p>
-                    <div class="vector-container">
-                        <div class="wire-globe"></div>
-                    </div>
                 </div>
 
                 <div class="bento-card col-4">
                     <span class="tag">Performance</span>
                     <h3>Optimization</h3>
                     <p>Enhance your TV's performance, manage files efficiently, and customize your interface with unique utility tools.</p>
-                    <div class="vector-container">
-                        <div class="data-bars">
-                            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="bento-card col-6">
-                    <span class="tag">Knowledge Base</span>
-                    <h3>Exclusive Guides</h3>
-                    <p>Access comprehensive, simple guides to transform your Android TV into a powerhouse. Stay informed with real-time updates on new apps, bug fixes, and emerging trends.</p>
-                </div>
-
-                <div class="bento-card col-6">
-                    <span class="tag">The Hub</span>
-                    <h3>Vibrant Community</h3>
-                    <p>Connect with fellow users, share tips, troubleshoot issues, and get expert support. We are constantly searching and featuring only the best TV mods.</p>
-                </div>
-
             </div>
         </section>
 
@@ -201,19 +256,17 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
 
     <script>
-        // Initialize Smooth Scrolling (Lenis)
-        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), direction: 'vertical', gestureDirection: 'vertical', smooth: true, mouseMultiplier: 1, smoothTouch: false });
+        // Smooth Scrolling
+        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
-        // Initialize WebGL Background (Vanta Fog)
+        // Vanta Fog Background
         VANTA.FOG({
             el: "#webgl-canvas",
             mouseControls: true, touchControls: true, gyroControls: false,
@@ -222,30 +275,19 @@
             baseColor: 0x0, blurFactor: 0.90, speed: 1.50, zoom: 0.50
         });
 
-        // Initialize GSAP Animations
+        // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero Reveal
         const tl = gsap.timeline();
-        tl.to(".hero-title", { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", duration: 1.5, ease: "power4.out", delay: 0.2 })
-          .to(".hero-subtitle", { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=1");
+        tl.to(".hero-title", { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", duration: 1.2, ease: "power4.out", delay: 0.2 })
+          .to(".hero-subtitle", { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.8")
+          .to(".hero-btn-group", { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6")
+          .to(".app-dock-wrapper", { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6");
 
-        // Bento Grid Scroll Animation
         gsap.utils.toArray('.bento-card').forEach((card, i) => {
             gsap.to(card, {
                 scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" },
-                y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: i * 0.1
-            });
-        });
-
-        // Interactive Spotlight Effect on Cards
-        document.querySelectorAll('.bento-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
+                y: 0, opacity: 1, duration: 1, ease: "power3.out"
             });
         });
     </script>
