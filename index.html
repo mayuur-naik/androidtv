@@ -132,6 +132,35 @@
             transition: background 0.2s, color 0.2s;
         }
         .app-card:hover .dl-btn { background: white; color: black; }
+        /* --- SHOW MORE BUTTON --- */
+        .show-more-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            width: 100%;
+        }
+        .show-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 14px 32px;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .show-more-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
 
         /* --- EXPANDED BENTO GRID --- */
         .section-padding { padding: 80px 0 120px; }
@@ -264,10 +293,7 @@
                         </div>
                         <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
                     </div>
-                    <div class="app-card">
-                        <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
-                    </div>
-
+                 
                 </div> <div class="show-more-wrapper">
                     <a href="store.html" class="show-more-btn">
                         View All Apps & Mods
