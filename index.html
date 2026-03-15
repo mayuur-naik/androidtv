@@ -163,4 +163,243 @@
         .bento-card {
             background: var(--glass); border: 1px solid var(--border);
             border-radius: 24px; padding: 60px; position: relative; overflow: hidden;
-            backdrop-filter: blur(20px); -webkit-backdrop-filter
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        
+        /* Fixed Column Layouts */
+        .col-12 { grid-column: span 12; min-height: 400px; }
+        .col-6 { grid-column: span 6; min-height: 400px; }
+        .col-12.bento-card, .col-6.bento-card { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; }
+        
+        .bento-card h3 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.03em; z-index: 2;}
+        .bento-card p { font-size: 1.25rem; color: var(--text-dim); line-height: 1.6; max-width: 600px; z-index: 2;}
+        .tag { display: inline-block; padding: 8px 16px; border: 1px solid var(--text-dim); border-radius: 100px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 30px; width: fit-content; z-index: 2;}
+
+        /* --- VISUAL VECTORS & OVERLAP FIX --- */
+        .visual-container { 
+            margin-top: auto; padding-top: 30px; width: 100%; position: relative; 
+            z-index: 1; display: flex; align-items: flex-end; justify-content: flex-end;
+        }
+        
+        .col-6 .visual-bg, .col-6 .visual-container {
+            position: relative; right: 0 !important; top: auto !important;
+            transform: none !important; align-self: flex-end; opacity: 0.8;
+        }
+        
+        .portal-ring { width: 250px; height: 250px; border-radius: 50%; border: 2px dashed var(--neon-blue); animation: spin 20s linear infinite; filter: drop-shadow(0 0 30px rgba(10,132,255,0.3));}
+        .portal-ring::before { content: ''; position: absolute; inset: 20px; border-radius: 50%; border: 1px solid var(--neon-purple); animation: spin 15s linear infinite reverse;}
+        
+        .app-stack { width: 200px; height: 200px; position: relative; transform: rotateX(60deg) rotateZ(-45deg); transform-style: preserve-3d; }
+        .stack-layer { position: absolute; inset: 0; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); animation: floatStack 4s ease-in-out infinite alternate; }
+        .stack-layer:nth-child(1) { background: rgba(191, 90, 242, 0.2); transform: translateZ(0); }
+        .stack-layer:nth-child(2) { background: rgba(10, 132, 255, 0.2); transform: translateZ(40px); animation-delay: 0.5s;}
+        
+        .speed-bars { display: flex; gap: 12px; align-items: flex-end; height: 100px; margin-top: 0;}
+        .s-bar { width: 15px; background: var(--neon-green); border-radius: 4px; animation: pulseSpeed 1s ease-in-out infinite alternate; box-shadow: 0 0 20px rgba(48,209,88,0.4);}
+        .s-bar:nth-child(2) { animation-delay: 0.2s; } .s-bar:nth-child(3) { animation-delay: 0.4s; } .s-bar:nth-child(4) { animation-delay: 0.1s; }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes floatStack { 100% { transform: translateZ(80px); } }
+        @keyframes pulseSpeed { 0% { height: 20px; opacity: 0.5;} 100% { height: 100px; opacity: 1;} }
+
+        /* --- FOOTER CTA --- */
+        .footer-cta { text-align: center; padding: 100px 0 150px; }
+        .footer-cta h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 40px; }
+        .huge-btn {
+            display: inline-block; background: white; color: black; padding: 24px 64px;
+            border-radius: 100px; font-size: 1.5rem; font-weight: 600; text-decoration: none;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .huge-btn:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 40px rgba(255,255,255,0.2); }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 900px) {
+            .bento-card { padding: 40px 24px; min-height: auto; }
+            .bento-card h3 { font-size: 2.2rem; }
+            .col-6 { grid-column: span 12; }
+            .hero-btn-group { flex-direction: column; align-items: flex-start; }
+            .primary-cta { width: 100%; justify-content: center; }
+            .visual-container { display: none; }
+        }
+        @media (max-width: 480px) {
+            .app-dock { grid-template-columns: 1fr; }
+            .section-padding { padding: 40px 0 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="webgl-canvas"></div>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">Android TV Tools</div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <section class="hero">
+            <h1 class="hero-title">Elevate Your<br>Smart TV.</h1>
+            <p class="hero-subtitle">The ultimate portal for ad-free YouTube, premium streaming mods, and powerful TV optimization tools. Stop scrolling and start downloading.</p>
+            
+            <div class="hero-btn-group">
+                <a href="https://android-tv.app/store" class="primary-cta">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download Now
+                </a>
+            </div>
+
+            <div class="app-dock-wrapper">
+                <div class="app-dock-title">Top Requested Mods</div>
+                <div class="app-dock">
+                    
+                    <div class="app-card">
+                        <div class="app-icon icon-yt">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#ff0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </div>
+                        <div>
+                            <h4>YouTube TV[MOD]</h4>
+                            <p>Ad-Free + SponsorBlock</p>
+                        </div>
+                        <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon icon-nf">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#E50914"><path d="M6.3 22.2V1.8h3.3l5.5 12.8V1.8h3.2v20.4h-3.3l-5.5-12.8v12.8H6.3z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Netflix TV[MOD]</h4>
+                            <p>Premium Unlocked</p>
+                        </div>
+                        <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon icon-sl">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        </div>
+                        <div>
+                            <h4>SonyLIV TV[MOD]</h4>
+                            <p>Premium Shows Unlocked</p>
+                        </div>
+                        <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon icon-sp">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#1ED760"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.6 14.4c-.16.27-.51.36-.78.2-2.14-1.31-4.83-1.6-8.01-.88-.31.07-.62-.13-.69-.44-.07-.31.13-.62.44-.69 3.49-.79 6.47-.46 8.84 1.03.27.16.35.51.2.78zm1.09-2.45c-.21.33-.64.44-.97.23-2.43-1.5-6.17-1.93-9.15-1.06-.38.11-.77-.11-.88-.49-.11-.38.11-.77.49-.88 3.43-.99 7.56-.51 10.28 1.17.33.21.44.64.23.97zm.12-2.55c-2.91-1.73-7.7-1.89-10.47-1.04-.45.14-.93-.11-1.07-.56-.14-.45.11-.93.56-1.07 3.25-.99 8.56-.81 11.96 1.21.4.24.53.76.29 1.16-.24.4-.76.53-1.16.29z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Spotify TV[MOD]</h4>
+                            <p>No Audio Ads + Skips</p>
+                        </div>
+                        <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
+                    </div>
+
+                </div>
+
+                <div class="show-more-wrapper">
+                    <a href="store.html" class="show-more-btn">
+                        View All Apps & Mods
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="grid">
+                
+                <div class="bento-card col-12">
+                    <span class="tag" style="color: var(--neon-blue); border-color: var(--neon-blue);">The Portal</span>
+                    <h3>A Dedicated Ecosystem.</h3>
+                    <p>It's not merely a channel; it's a dedicated portal to elevate your Android TV experience. We meticulously curate everything from essential utilities and powerful modifications to the latest apps and exclusive content, ensuring you always have the best at your fingertips.</p>
+                    <div class="visual-container">
+                        <div class="portal-ring"></div>
+                    </div>
+                </div>
+
+                <div class="bento-card col-12">
+                    <span class="tag" style="color: var(--neon-purple); border-color: var(--neon-purple);">Premium & Ad-Free</span>
+                    <h3>Unrivaled Entertainment.</h3>
+                    <p>Experience the best of streaming services, utility tools, and entertainment apps, often ad-free, premium, and fully unlocked. We ensure a safe and glitch-free experience, backed by constant updates and expert support.</p>
+                    <div class="visual-container">
+                        <div class="app-stack">
+                            <div class="stack-layer"></div>
+                            <div class="stack-layer"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card col-6">
+                    <span class="tag" style="color: var(--neon-green); border-color: var(--neon-green);">Performance</span>
+                    <h3>Maximum Speed.</h3>
+                    <p>Enhance your Android TV's performance with targeted debloat tools. Free up RAM, remove pre-installed bloatware, and make your Firestick, TCL, or Mi Box run twice as fast.</p>
+                    <div class="visual-container">
+                        <div class="speed-bars">
+                            <div class="s-bar"></div><div class="s-bar"></div><div class="s-bar"></div><div class="s-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card col-6">
+                    <span class="tag" style="color: var(--neon-orange); border-color: var(--neon-orange);">Optimization</span>
+                    <h3>Total Control.</h3>
+                    <p>Manage files efficiently and customize your interface with unique utility tools. Access comprehensive guides to transform your setup into a powerhouse.</p>
+                    <div class="visual-container">
+                        <div style="font-size: 150px; filter: drop-shadow(0 0 40px rgba(255,149,0,0.5));">⚙️</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="footer-cta">
+            <h2>Ready to transform<br>your experience?</h2>
+            <a href="https://t.me/androidTV_tools" class="huge-btn">JOIN TELEGRAM CHANNEL</a>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+
+    <script>
+        // Smooth Scrolling
+        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // Vanta Fog Background
+        VANTA.FOG({
+            el: "#webgl-canvas",
+            mouseControls: true, touchControls: true, gyroControls: false,
+            minHeight: 200.00, minWidth: 200.00,
+            highlightColor: 0x111111, midtoneColor: 0x0, lowlightColor: 0x2563eb,
+            baseColor: 0x0, blurFactor: 0.90, speed: 1.50, zoom: 0.50
+        });
+
+        // RE-WRITTEN GSAP ANIMATIONS (Graceful Degradation Fix)
+        gsap.registerPlugin(ScrollTrigger);
+        const tl = gsap.timeline();
+        
+        // Using "from" instead of "to" means the elements exist safely by default!
+        tl.from(".hero-title", { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 1.2, ease: "power4.out", delay: 0.2 })
+          .from(".hero-subtitle", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.8")
+          .from(".hero-btn-group", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+          .from(".app-dock-wrapper", { y: 40, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
+
+        gsap.utils.toArray('.bento-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" },
+                y: 50, opacity: 0, duration: 1, ease: "power3.out"
+            });
+        });
+    </script>
+</body>
+</html>
