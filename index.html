@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Mod Apps for Anndroid TV | Download modded Apps For TV devices</title>
+    <title>Mod Apps for Android TV | Download modded Apps For TV devices</title>
     <meta name="description" content="Download Ads-Free Premium Unlocked Apk for android TV for Free . We meticulously curate essential utilities, premium ad-free apps, and exclusive content.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ETVF2WBTXC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ETVF2WBTXC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ETVF2WBTXC');
+    </script>
 
-  gtag('config', 'G-ETVF2WBTXC');
-</script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
     <style>
         /* --- CORE DESIGN SYSTEM --- */
         :root {
@@ -68,7 +68,7 @@
         }
         .logo { font-weight: 800; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
         
-        /* --- HERO SECTION & IMMEDIATE CTA --- */
+        /* --- HERO SECTION --- */
         .hero { 
             min-height: 100vh; display: flex; flex-direction: column; 
             justify-content: center; padding-top: 100px; padding-bottom: 60px;
@@ -115,8 +115,6 @@
         .app-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
         
         .app-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
-        
-        /* Updated Icon Colors */
         .icon-yt { background: rgba(255, 0, 0, 0.1); box-shadow: 0 0 20px rgba(255,0,0,0.2); }
         .icon-nf { background: rgba(229, 9, 20, 0.1); box-shadow: 0 0 20px rgba(229,9,20,0.2); }
         .icon-sl { background: linear-gradient(135deg, #f0145a, #fc6027); box-shadow: 0 0 20px rgba(240,20,90,0.3); }
@@ -132,34 +130,20 @@
             transition: background 0.2s, color 0.2s;
         }
         .app-card:hover .dl-btn { background: white; color: black; }
+
         /* --- SHOW MORE BUTTON --- */
-        .show-more-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-            width: 100%;
-        }
+        .show-more-wrapper { display: flex; justify-content: center; margin-top: 40px; width: 100%; }
         .show-more-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 14px 32px;
-            border-radius: 100px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
+            color: var(--text-main); padding: 14px 32px; border-radius: 100px;
+            font-size: 1rem; font-weight: 600; text-decoration: none;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
         .show-more-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
         }
 
         /* --- EXPANDED BENTO GRID --- */
@@ -174,15 +158,26 @@
             display: flex; flex-direction: column; justify-content: center;
         }
         
+        /* Fixed Column Layouts */
         .col-12 { grid-column: span 12; min-height: 400px; }
-        .col-12.bento-card { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; }
+        .col-6 { grid-column: span 6; min-height: 400px; }
+        .col-12.bento-card, .col-6.bento-card { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; }
         
         .bento-card h3 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.03em; z-index: 2;}
         .bento-card p { font-size: 1.25rem; color: var(--text-dim); line-height: 1.6; max-width: 600px; z-index: 2;}
         .tag { display: inline-block; padding: 8px 16px; border: 1px solid var(--text-dim); border-radius: 100px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 30px; width: fit-content; z-index: 2;}
 
-        /* --- VISUAL VECTORS --- */
-        .visual-container { margin-top: 40px; width: 100%; position: relative; z-index: 1; display: flex; align-items: center; justify-content: flex-end;}
+        /* --- VISUAL VECTORS & OVERLAP FIX --- */
+        .visual-container { 
+            margin-top: auto; padding-top: 30px; width: 100%; position: relative; 
+            z-index: 1; display: flex; align-items: flex-end; justify-content: flex-end;
+        }
+        
+        /* Forces graphics to bottom right for col-6 */
+        .col-6 .visual-bg, .col-6 .visual-container {
+            position: relative; right: 0 !important; top: auto !important;
+            transform: none !important; align-self: flex-end; opacity: 0.8;
+        }
         
         .portal-ring { width: 250px; height: 250px; border-radius: 50%; border: 2px dashed var(--neon-blue); animation: spin 20s linear infinite; filter: drop-shadow(0 0 30px rgba(10,132,255,0.3));}
         .portal-ring::before { content: ''; position: absolute; inset: 20px; border-radius: 50%; border: 1px solid var(--neon-purple); animation: spin 15s linear infinite reverse;}
@@ -192,13 +187,13 @@
         .stack-layer:nth-child(1) { background: rgba(191, 90, 242, 0.2); transform: translateZ(0); }
         .stack-layer:nth-child(2) { background: rgba(10, 132, 255, 0.2); transform: translateZ(40px); animation-delay: 0.5s;}
         
-        .speed-bars { display: flex; gap: 12px; align-items: flex-end; height: 150px; margin-top: 40px;}
+        .speed-bars { display: flex; gap: 12px; align-items: flex-end; height: 100px; margin-top: 0;}
         .s-bar { width: 15px; background: var(--neon-green); border-radius: 4px; animation: pulseSpeed 1s ease-in-out infinite alternate; box-shadow: 0 0 20px rgba(48,209,88,0.4);}
         .s-bar:nth-child(2) { animation-delay: 0.2s; } .s-bar:nth-child(3) { animation-delay: 0.4s; } .s-bar:nth-child(4) { animation-delay: 0.1s; }
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes floatStack { 100% { transform: translateZ(80px); } }
-        @keyframes pulseSpeed { 0% { height: 20px; opacity: 0.5;} 100% { height: 150px; opacity: 1;} }
+        @keyframes pulseSpeed { 0% { height: 20px; opacity: 0.5;} 100% { height: 100px; opacity: 1;} }
 
         /* --- FOOTER CTA --- */
         .footer-cta { text-align: center; padding: 100px 0 150px; }
@@ -214,6 +209,7 @@
         @media (max-width: 900px) {
             .bento-card { padding: 40px 24px; min-height: auto; }
             .bento-card h3 { font-size: 2.2rem; }
+            .col-6 { grid-column: span 12; }
             .hero-btn-group { flex-direction: column; align-items: flex-start; }
             .primary-cta { width: 100%; justify-content: center; }
             .visual-container { display: none; }
@@ -293,16 +289,16 @@
                         </div>
                         <a href="https://t.me/androidTV_tools" class="dl-btn">Get APK</a>
                     </div>
-                 
-                </div> <div class="show-more-wrapper">
+
+                </div>
+
+                <div class="show-more-wrapper">
                     <a href="store.html" class="show-more-btn">
                         View All Apps & Mods
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
                 </div>
-                </div> </section>
 
-                </div>
             </div>
         </section>
 
@@ -330,7 +326,7 @@
                     </div>
                 </div>
 
-                <div class="bento-card col-12">
+                <div class="bento-card col-6">
                     <span class="tag" style="color: var(--neon-green); border-color: var(--neon-green);">Performance</span>
                     <h3>Maximum Speed.</h3>
                     <p>Enhance your Android TV's performance with targeted debloat tools. Free up RAM, remove pre-installed bloatware, and make your Firestick, TCL, or Mi Box run twice as fast.</p>
@@ -341,7 +337,7 @@
                     </div>
                 </div>
 
-                <div class="bento-card col-12">
+                <div class="bento-card col-6">
                     <span class="tag" style="color: var(--neon-orange); border-color: var(--neon-orange);">Optimization</span>
                     <h3>Total Control.</h3>
                     <p>Manage files efficiently and customize your interface with unique utility tools. Access comprehensive guides to transform your setup into a powerhouse.</p>
@@ -368,34 +364,4 @@
     <script>
         // Smooth Scrolling
         const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
-
-        // Vanta Fog Background
-        VANTA.FOG({
-            el: "#webgl-canvas",
-            mouseControls: true, touchControls: true, gyroControls: false,
-            minHeight: 200.00, minWidth: 200.00,
-            highlightColor: 0x111111, midtoneColor: 0x0, lowlightColor: 0x2563eb,
-            baseColor: 0x0, blurFactor: 0.90, speed: 1.50, zoom: 0.50
-        });
-
-        // GSAP Animations
-        gsap.registerPlugin(ScrollTrigger);
-
-        const tl = gsap.timeline();
-        tl.to(".hero-title", { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", duration: 1.2, ease: "power4.out", delay: 0.2 })
-          .to(".hero-subtitle", { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.8")
-          .to(".hero-btn-group", { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6")
-          .to(".app-dock-wrapper", { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6");
-
-        // Staggered Scroll Animations for Expanded Grid
-        gsap.utils.toArray('.bento-card').forEach((card, i) => {
-            gsap.to(card, {
-                scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" },
-                y: 0, opacity: 1, duration: 1, ease: "power3.out"
-            });
-        });
-    </script>
-</body>
-</html>
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf);
