@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ETVF2WBTXC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ETVF2WBTXC');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ETVF2WBTXC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ETVF2WBTXC');
+    </script>
     <title>Download Netflix TV Mod APK | Android TV Tools</title>
     <meta name="description" content="Download the premium unlocked Netflix Mod for Android TV. 100% safe, ad-free, and optimized for Firestick and Mi Box.">
     
@@ -25,7 +23,10 @@
             --text-dim: #888888;
             --glass: rgba(20, 20, 20, 0.6);
             --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.25);
             --neon-red: #E50914; /* Netflix Brand Color */
+            --neon-blue: #0A84FF;
+            --neon-purple: #BF5AF2;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -89,6 +90,7 @@
             flex-direction: column;
             justify-content: center;
             padding-top: 10px;
+            width: 100%;
         }
 
         .app-info h1 {
@@ -105,94 +107,27 @@
             font-size: 1.1rem;
             margin-bottom: 24px;
         }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: var(--neon-red);
-            color: white;
-            padding: 18px 40px;
-            border-radius: 100px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: fit-content;
-        }
-        .download-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(229, 9, 20, 0.6);
-        }
-
-        /* --- SCREENSHOT GALLERY --- */
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-        }
-
-        .gallery-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            padding-bottom: 20px;
-            margin-bottom: 60px;
-            /* Creates the smooth horizontal snap effect */
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Firefox */
-        }
-        .gallery-wrapper::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
-
-        .gallery-track {
-            display: flex;
-            gap: 20px;
-            width: max-content;
-        }
-
-        .screenshot {
-            height: 350px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            scroll-snap-align: start;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            object-fit: cover;
-        }
-
-        /* --- DESCRIPTION SECTION --- */
-        .description-box {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 40px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        .description-box p {
+        
+        /* Styled list for the developer tag to replace the manual <br> tags */
+        .feature-list {
+            margin-top: 15px;
+            list-style: none;
             color: var(--text-dim);
-            font-size: 1.15rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
+            font-weight: 400;
+            font-size: 1rem;
         }
-        .description-box p:last-child { margin-bottom: 0; }
+        .feature-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .feature-list li::before {
+            content: "•";
+            color: var(--neon-red);
+            font-weight: bold;
+        }
 
-        /* --- RESPONSIVE MOBILE FIXES --- */
-        @media (max-width: 768px) {
-            .app-hero {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 24px;
-            }
-            .app-info { align-items: center; }
-            .download-btn { width: 100%; }
-            .screenshot { height: 250px; }
-            .description-box { padding: 24px; }
-        }
         /* --- DUAL DOWNLOAD BUTTONS --- */
         .download-options {
             display: flex;
@@ -200,10 +135,10 @@
             margin-top: 30px;
             flex-wrap: wrap; 
             width: 100%;
-            max-width: 600px;
+            max-width: 600px; /* Keeps buttons from stretching too far on desktop */
         }
 
-        .download-options .btn {
+        .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -245,6 +180,76 @@
             transform: translateY(-3px);
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 10px 20px rgba(0,0,0,0.3);
         }
+
+        /* --- SCREENSHOT GALLERY --- */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .gallery-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            margin-bottom: 60px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .gallery-wrapper::-webkit-scrollbar { display: none; }
+
+        .gallery-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+        }
+
+        .screenshot {
+            height: 350px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            scroll-snap-align: start;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: cover;
+        }
+
+        /* --- DESCRIPTION SECTION --- */
+        .description-box {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .description-box p {
+            color: var(--text-dim);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .description-box p:last-child { margin-bottom: 0; }
+        
+        .description-box strong { color: var(--text-main); }
+
+        /* --- RESPONSIVE MOBILE FIXES --- */
+        @media (max-width: 768px) {
+            .app-hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 24px;
+            }
+            .app-info { align-items: center; text-align: center; }
+            .feature-list { text-align: left; }
+            .download-options { width: 100%; }
+            .btn { width: 100%; }
+            .screenshot { height: 250px; }
+            .description-box { padding: 24px; }
+        }
     </style>
 </head>
 <body>
@@ -264,18 +269,25 @@
             <div class="app-info">
                 <h1>Netflix TV MOD</h1>
                 <div class="developer-tag">
-                    <div style="text-align: left;">  <br>  <br>• Premium Features Unlocked <br> <br>• Ads-Free <br> <br>• No need to Login (Enter OTP 111111)  <br>  <br> <br> </div>
-                    </div>
+                    NetMirror
+                    <ul class="feature-list">
+                        <li>Premium Features Unlocked</li>
+                        <li>Ads-Free</li>
+                        <li>No need to Login (Enter OTP 111111)</li>
+                    </ul>
+                </div>
                 
-                <a href="https://huggingface.co/datasets/mayurnn/Androidtvasstest/resolve/main/NetMirrorTV.apk?download=true" class="btn direct-dl" download>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Direct Download
-                </a>
+                <div class="download-options">
+                    <a href="https://huggingface.co/datasets/mayurnn/Androidtvasstest/resolve/main/NetMirrorTV.apk?download=true" class="btn direct-dl" download>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Direct Download
+                    </a>
 
-                <a href="https://t.me/AndroidTV_appsbot?start=BQADAQADnwwAAqnzuEUCeidmG2V-DBYE" class="btn telegram-dl" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                    Via Telegram(fast) 
-                </a>
+                    <a href="https://t.me/AndroidTV_appsbot?start=BQADAQADnwwAAqnzuEUCeidmG2V-DBYE" class="btn telegram-dl" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        Via Telegram(fast) 
+                    </a>
+                </div>
 
             </div>
         </div>
@@ -293,15 +305,18 @@
         <div class="description-box">
             <p>Download premium unlocked ads-free mod apk of Netflix For Android TV. This Netflix TV Mod is meticulously optimized for Android TV interfaces, including Firestick, Mi Box, and TCL Smart TVs. It bypasses standard restrictions, offering you full access to premium unlocked features.</p>
             <p>
- <strong> Mod Features</strong> <br>
-● Premium Features Unlocked<br>
-● Unlocked Playing High Quality Content<br>
-● No Need to Watch 20 Sec Ads Everyday<br>
-● No need to Login (Login Skipable)<br>
-● Manifest & Resources Cleaned<br>
-● Compatible for all Devices<br>
-● Optimized & Polished APK<br>
-● All Debug Info Removed</p>
+            <strong>Mod Features</strong><br>
+            <ul class="feature-list" style="margin-top: 10px;">
+                <li>Premium Features Unlocked</li>
+                <li>Unlocked Playing High Quality Content</li>
+                <li>No Need to Watch 20 Sec Ads Everyday</li>
+                <li>No need to Login (Login Skipable)</li>
+                <li>Manifest & Resources Cleaned</li>
+                <li>Compatible for all Devices</li>
+                <li>Optimized & Polished APK</li>
+                <li>All Debug Info Removed</li>
+            </ul>
+            </p>
         </div>
 
     </div>
