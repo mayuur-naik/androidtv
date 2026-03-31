@@ -193,6 +193,58 @@
             .screenshot { height: 250px; }
             .description-box { padding: 24px; }
         }
+        /* --- DUAL DOWNLOAD BUTTONS --- */
+        .download-options {
+            display: flex;
+            gap: 16px;
+            margin-top: 30px;
+            flex-wrap: wrap; 
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .download-options .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            flex: 1; 
+            min-width: 240px;
+        }
+
+        /* Direct Download - Glowing Theme */
+        .direct-dl {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(10, 132, 255, 0.3);
+            border: none;
+        }
+        .direct-dl:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(191, 90, 242, 0.4);
+        }
+
+        /* Telegram Download - Glass Theme */
+        .telegram-dl {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-hover);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .telegram-dl:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 10px 20px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body>
@@ -215,10 +267,16 @@
                     <div style="text-align: left;">  <br>  <br>• Premium Features Unlocked <br> <br>• Ads-Free <br> <br>• No need to Login (Enter OTP 111111)  <br>  <br> <br> </div>
                     </div>
                 
-                <a href="https://t.me/AndroidTV_appsbot?start=BQADAQADnwwAAqnzuEUCeidmG2V-DBYE" class="download-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Download APK
+                <a href="https://huggingface.co/datasets/mayurnn/Androidtvasstest/resolve/main/NetMirrorTV.apk?download=true" class="btn direct-dl" download>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Direct Download
                 </a>
+
+                <a href="https://t.me/AndroidTV_appsbot?start=BQADAQADnwwAAqnzuEUCeidmG2V-DBYE" class="btn telegram-dl" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    Via Telegram(fast) 
+                </a>
+
             </div>
         </div>
 
